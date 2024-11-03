@@ -167,3 +167,18 @@ export const testimonials = [
     title: "South Jakarta",
   },
 ];
+
+export const contactLinks = [
+  {
+    name: "Baregbeg, Kec. Lakbok, Kabupaten Ciamis, Jawa Barat 46385",
+    icon: "/ic_location.svg",
+  },
+  {
+    name: "+62 447 991 001",
+    icon: "/ic_baseline-phone.svg",
+  },
+  {
+    name: "emailsupport@gmail.com",
+    icon: "/ic_baseline-email.svg",
+  },
+];

@@ -1,3 +1,5 @@
+import { contactLinks } from "@/constants";
+
 export default function ContactUs() {
   return (
     <section className="flex flex-col items-center" id="contact">
@@ -16,18 +18,12 @@ export default function ContactUs() {
         />
         <div className="mx-5 lg:mx-0">
           <ul className="font-light space-y-7">
-            <li className="flex gap-2">
-              <img src="/ic_location.svg"  alt="icon location"/>
-              Baregbeg, Kec. Lakbok, Kabupaten Ciamis, Jawa Barat 46385
-            </li>
-            <li className="flex gap-2">
-              <img src="/ic_baseline-phone.svg"  alt="icon phone"/>
-              +62 447 991 001
-            </li>
-            <li className="flex gap-2">
-              <img src="/ic_baseline-email.svg"  alt="icon email"/>
-              emailsupport@gmail.com
-            </li>
+            {contactLinks.map(contact => (
+              <li className="flex gap-2" key={contact.name}>
+                <img src={contact.icon} alt="icon location" />
+                {contact.name}
+              </li>
+            ))}
           </ul>
         </div>
       </div>
