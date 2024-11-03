@@ -36,3 +36,11 @@ body {
     --radius: 0.75rem;
   }
 }
+
+::-webkit-scrollbar {
+  @apply w-1 bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply w-1 rounded-lg bg-primary;
+}
