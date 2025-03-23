@@ -11,7 +11,7 @@ export default function ContactUs() {
       </p>
       <div className="w-full lg:mt-20 mt-10 flex flex-col lg:flex-row lg:gap-16 gap-10">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d713.120970490529!2d108.63891799578518!3d-7.358741733018631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6f7d7f73750a3f%3A0x49c45563c54382c6!2sAlun-Alun%20Langensari!5e0!3m2!1sid!2sid!4v1730443281482!5m2!1sid!2sid"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d428.9490827003388!2d108.6835324853339!3d-7.402892821389782!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e65870027fc519f%3A0xa4bcc88743f145bb!2sRumah%20tingal%2Ftempat%20usaha!5e1!3m2!1sid!2sid!4v1742704097808!5m2!1sid!2sid"
           width="600"
           height="450"
           style={{ border: 0 }}

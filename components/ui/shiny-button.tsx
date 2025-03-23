@@ -42,9 +42,10 @@ const ShinyButton = ({ children, className, ...props }: ShinyButtonProps) => {
       )}
     >
       <span
-        className="relative block size-full lg:text-sm text-xs tracking-wide text-[rgb(0,0,0,65%)]"
+        className="relative block size-full lg:text-sm text-xs tracking-wide"
         style={{
-          maskImage: "linear-gradient(-75deg,hsl(var(--primary)) calc(var(--x) + 20%),transparent calc(var(--x) + 30%),hsl(var(--primary)) calc(var(--x) + 100%))",
+          maskImage:
+            "linear-gradient(-75deg,hsl(var(--primary)) calc(var(--x) + 20%),transparent calc(var(--x) + 30%),hsl(var(--primary)) calc(var(--x) + 100%))",
         }}
       >
         {children}

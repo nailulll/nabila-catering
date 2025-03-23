@@ -15,7 +15,11 @@ const Hero = () => {
         mengingatkan Anda pada masakan ibu Anda.
       </p>
       <div className="flex gap-5 justify-center mt-10">
-        <Button className="text-white py-5">Kontak Sekarang</Button>
+        <Button className="text-white py-5" asChild>
+          <a href="https://wa.me/6283117566712" target="_blank">
+            Kontak Sekarang
+          </a>
+        </Button>
         <Button className="text-white py-5 bg-dark" asChild>
           <Link href="#menu">Cek menu</Link>
         </Button>

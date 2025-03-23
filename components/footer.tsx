@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { socialLinks, menuLinks } from "@/constants";
 import Link from "next/link";
+import ShinyButton from "./ui/shiny-button";
 
 export default function Footer() {
   return (
@@ -17,6 +18,20 @@ export default function Footer() {
           <p className="font-light mt-5 text-xs lg:text-base ">
             Makanan enak membuat hari lebih baik.
           </p>
+          <a href="https://nesthubstudios.web.id" target="_blank">
+            <ShinyButton className="bg-[#CA243F] text-white mt-4">
+              <div className="flex gap-2">
+                <span className="font-light">Bagian dari</span>
+                <Image
+                  src="/nest-logo-white.png"
+                  alt="nest hub studios logo"
+                  className="object-contain"
+                  width={40}
+                  height={40}
+                />
+              </div>
+            </ShinyButton>
+          </a>
         </div>
         <div>
           <ul className="space-y-7 lg:text-base text-sm">

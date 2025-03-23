@@ -176,15 +176,15 @@ export const testimonials = [
 
 export const contactLinks = [
   {
-    name: "Baregbeg, Kec. Lakbok, Kabupaten Ciamis, Jawa Barat 46385",
+    name: "RT 03 RW 03, Desa Baregbeg, Kec. Lakbok, Kabupaten Ciamis, Jawa Barat 46385",
     icon: "/ic_location.svg",
   },
   {
-    name: "+62 447 991 001",
+    name: "+62 831 1756 6712",
     icon: "/ic_baseline-phone.svg",
   },
   {
-    name: "emailsupport@gmail.com",
+    name: "nest.hub.studios@gmail.com",
     icon: "/ic_baseline-email.svg",
   },
 ];
