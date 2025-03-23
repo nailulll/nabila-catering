@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
@@ -65,6 +66,8 @@ export default function RootLayout({
         <WaButton />
         <Footer />
       </body>
+
+      <GoogleAnalytics gaId="G-ZTE7F851H5" />
     </html>
   );
 }
