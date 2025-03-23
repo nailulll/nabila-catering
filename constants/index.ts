@@ -1,14 +1,14 @@
 export const menuLinks = [
   {
-    name: "Home",
+    name: "Beranda",
     link: "#top",
   },
   {
-    name: "Pricing",
+    name: "Harga",
     link: "#pricing",
   },
   {
-    name: "Contact",
+    name: "Kontak",
     link: "#contact",
   },
 ];
@@ -30,22 +30,22 @@ export const socialLinks = [
 
 export const menus = [
   {
-    title: "Fried Food",
-    category: "Rp 1000 - Rp 3000",
+    title: "Gorengan",
+    category: "Rp 1.000 - Rp 3.000",
     src: "/gorengan.jpg",
   },
   {
-    title: "Rice + Grilled Chicken",
+    title: "Nasi Ayam Bakar",
     category: "Rp 12.000 - Rp 22.000",
     src: "/nasi-ayam-bakar.jpg",
   },
   {
-    title: "chicken braised in coconut milk",
+    title: "Opor Ayam",
     category: "Rp 15.000 - Rp 27.000",
     src: "/opor.jpg",
   },
   {
-    title: "stack of cucumbers with tomatoes on top",
+    title: "Salad",
     category: "Rp 9.000 - Rp 15.000",
     src: "/salad.jpg",
   },
@@ -54,96 +54,99 @@ export const menus = [
 export const pricingPlans = [
   {
     title: {
-      name: "Small Pack",
-      question: "Prices can change depending on what you choose",
+      name: "Paket Dasar",
+      question: "Harga bisa berubah tergantung pilihan menu",
       active: true,
     },
-    description: "Suitable for thanksgiving events or small family gatherings. The menu can be selected according to taste, providing flexibility according to needs.",
-    pricing: "12Rb - 15Rb",
+    description:
+      "Cocok untuk acara syukuran atau kumpul keluarga kecil. Menu bisa dipilih sesuai selera, memberikan fleksibilitas sesuai kebutuhan.",
+    pricing: "Rp 12.000 - Rp 15.000",
     features: [
       {
-        name: "Main Menu on Request",
+        name: "Menu Utama Sesuai Permintaan",
         active: true,
       },
       {
-        name: "Small or Medium Sized Food Place",
+        name: "Tempat Makanan Kecil atau Sedang",
         active: true,
       },
       {
-        name: "Snack Food on Request",
+        name: "Makanan Ringan Sesuai Permintaan",
         active: false,
-        question: "Prices can change depending on what you choose",
+        question: "Harga bisa berubah tergantung pilihan menu",
       },
     ],
     button: {
-      text: "Order Now",
+      text: "Pesan Sekarang",
       link: "",
       active: true,
     },
   },
   {
     title: {
-      name: "Advanced Pack",
-      question: "Prices can change depending on what you choose",
+      name: "Paket Lanjutan",
+      question: "Harga bisa berubah tergantung pilihan menu",
       active: true,
     },
-    description: "Ideal for large celebrations or special events. Providing a wider variety of menu options and larger portions to accommodate many guests.",
-    pricing: "23Rb - 35Rb",
+    description:
+      "Ideal untuk perayaan besar atau acara spesial. Menyediakan variasi menu yang lebih luas dan porsi lebih besar untuk banyak tamu.",
+    pricing: "Rp 23.000 - Rp 35.000",
     features: [
       {
-        name: "Main Menu on Request",
+        name: "Menu Utama Sesuai Permintaan",
         active: true,
       },
       {
-        name: "Small or Medium Sized Food Place",
+        name: "Tempat Makanan Kecil atau Sedang",
         active: true,
       },
       {
-        name: "Snack Food on Request",
+        name: "Makanan Ringan Sesuai Permintaan",
         active: true,
       },
       {
-        name: "Drinks on Request",
+        name: "Minuman Sesuai Permintaan",
         active: true,
       },
     ],
     button: {
-      text: "Order Now",
+      text: "Pesan Sekarang",
       link: "",
       active: true,
     },
   },
   {
     title: {
-      name: "Custom Pack",
+      name: "Paket Kustom",
       active: false,
     },
-    description: "Customize every detail to your liking! From menu choices and portions, we are ready to create the perfect catering for your needs.",
+    description:
+      "Sesuaikan setiap detail sesuai keinginan! Dari pilihan menu hingga porsi, kami siap membuat catering yang sempurna untukmu.",
     pricing: "_",
     features: [
       {
-        name: "Various Menus on Request",
+        name: "Berbagai Menu Sesuai Permintaan",
         active: false,
       },
       {
-        name: "Big or Medium Sized Food Place",
+        name: "Tempat Makanan Besar atau Sedang",
         active: false,
       },
       {
-        name: "Main Menu on Request",
+        name: "Menu Utama Sesuai Permintaan",
         active: false,
       },
       {
-        name: "Drinks on Request",
+        name: "Minuman Sesuai Permintaan",
         active: false,
       },
       {
-        name: "Snack Food on Request",
+        name: "Makanan Ringan Sesuai Permintaan",
         active: false,
       },
     ],
     button: {
-      text: "Contact Us",
+      text: "Hubungi Kami",
       link: "",
       active: false,
     },
@@ -152,19 +155,22 @@ export const pricingPlans = [
 
 export const testimonials = [
   {
-    quote: "The food is really good, the portions are just right, and it always arrives on time. The grilled chicken with sambal matah is the best!",
+    quote:
+      "Makanannya enak banget, porsinya pas, dan selalu datang tepat waktu. Ayam bakar sambal matahnya juara banget!",
     name: "Budi",
-    title: "West Jakarta",
+    title: "Jakarta Barat",
   },
   {
-    quote: "I really like the flexibility. Whether you want to change the menu or add portions, everything can be arranged easily. Highly recommended!",
+    quote:
+      "Aku suka fleksibilitasnya. Mau ubah menu atau tambah porsi, semuanya gampang diatur. Recommended banget!",
     name: "Tia",
-    title: "West Jakarta",
+    title: "Jakarta Barat",
   },
   {
-    quote: "Have been a regular customer of this catering for family events. The food is always fresh and the seasoning is great. All the guests love it!",
+    quote:
+      "Udah langganan catering ini buat acara keluarga. Makanannya selalu fresh dan bumbunya pas banget. Semua tamu suka!",
     name: "Edgar Allan Poe",
-    title: "South Jakarta",
+    title: "Jakarta Selatan",
   },
 ];
 

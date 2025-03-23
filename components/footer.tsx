@@ -14,11 +14,13 @@ export default function Footer() {
             height={50}
             className="w-10"
           />
-          <p className="font-light mt-5 text-xs lg:text-base ">Good food makes the day better.</p>
+          <p className="font-light mt-5 text-xs lg:text-base ">
+            Makanan enak membuat hari lebih baik.
+          </p>
         </div>
         <div>
           <ul className="space-y-7 lg:text-base text-sm">
-            <li className="font-semibold">Stay Connected</li>
+            <li className="font-semibold">Tetap Terhubung</li>
             {socialLinks.map((social) => (
               <li key={social.name}>{social.name}</li>
             ))}
@@ -29,9 +31,7 @@ export default function Footer() {
             <li className="font-semibold">Menu</li>
             {menuLinks.map((menu) => (
               <li key={menu.name}>
-                <Link href={menu.link}>
-                  {menu.name}
-                </Link>
+                <Link href={menu.link}>{menu.name}</Link>
               </li>
             ))}
           </ul>
@@ -39,7 +39,9 @@ export default function Footer() {
       </div>
       <hr className="border-dark mt-20" />
       <h6 className="font-light mt-5 text-xs lg:text-base">
-        Copyright 2024. <span className="text-primary">Nabila Catering</span>. All Right Reserved
+        Copyright {new Date().getFullYear()}.{" "}
+        <span className="text-primary">Nabila Catering</span>. All Right
+        Reserved
       </h6>
     </footer>
   );

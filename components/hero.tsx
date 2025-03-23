@@ -7,21 +7,17 @@ const Hero = () => {
   return (
     <section className="text-center md:py-52 pt-20 pb-40 lg:mx-auto mx-5">
       <h1 className="md:text-5xl text-xl max-w-4xl mx-auto font-semibold text-dark">
-        Enjoy Delicious Home Cooking, Ready to be{" "}
-        <Cover>Delivered Every Day!</Cover>
+        Nikmati Masakan Rumahan yang Lezat{" "}
+        <Cover>Siap Diantar Setiap Hari!</Cover>
       </h1>
       <p className="md:text-lg text-sm font-light max-w-xl mx-auto mt-5 tracking-widest leading-loose">
-        We provide healthy home-cooked food with authentic flavors that remind
-        you of your mom's cooking.
+        Kami menyediakan makanan rumahan yang sehat dengan cita rasa asli yang
+        mengingatkan Anda pada masakan ibu Anda.
       </p>
       <div className="flex gap-5 justify-center mt-10">
-        <Button className="text-white py-5">
-          Contact Now
-        </Button>
+        <Button className="text-white py-5">Kontak Sekarang</Button>
         <Button className="text-white py-5 bg-dark" asChild>
-          <Link href="#menu">
-            Check Menu
-          </Link>
+          <Link href="#menu">Cek menu</Link>
         </Button>
       </div>
       {/*<Img*/}
