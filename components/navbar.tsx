@@ -12,11 +12,8 @@ import {
 import Link from "next/link";
 
 const Navbar = () => {
-
   return (
-    <nav
-      className="lg:mx-auto lg:py-5 px-5 py-3 top-0 sticky border-b-primary/20 border backdrop-blur bg-white/10 z-50"
-    >
+    <nav className="lg:mx-auto lg:py-5 px-5 py-3 top-0 sticky border-b-primary/20 border backdrop-blur bg-white/10 z-50">
       <div className="max-w-7xl flex justify-between items-center mx-auto">
         <div>
           <Image
@@ -54,7 +51,7 @@ const Navbar = () => {
           </DropdownMenuTrigger>
           <DropdownMenuContent
             className="mr-5 bg-transparent backdrop-blur"
-            onCloseAutoFocus={event => event.preventDefault()}
+            onCloseAutoFocus={(event) => event.preventDefault()}
           >
             {menuLinks.map((menu) => (
               <DropdownMenuItem key={menu.name}>

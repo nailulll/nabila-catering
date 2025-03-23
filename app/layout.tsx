@@ -5,6 +5,7 @@ import React from "react";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import WaButton from "@/components/wa-button";
+import Banner from "@/components/banner";
 
 export const metadata: Metadata = {
   title: "Nabila Catering",
@@ -16,15 +17,24 @@ const fonts = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className="scroll-smooth">
-    <body className={`${fonts.className} bg-white bg-dot-black/[0.2] overflow-x-hidden`}>
-      <Navbar />
-      {children}
-      <WaButton />
-      <Footer />
-    </body>
+      <body
+        className={`${fonts.className} bg-white bg-dot-black/[0.2] overflow-x-hidden`}
+      >
+        <Navbar />
+        <div className="bg-primary text-center">
+          <p className="text-white text-xs md:text-sm py-2">
+            Hanya menerima pesanan dari daerah Ciamis, Lakbok.
+          </p>
+        </div>
+        {children}
+        <WaButton />
+        <Footer />
+      </body>
     </html>
   );
 }
