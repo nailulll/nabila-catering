@@ -180,7 +180,7 @@ export const contactLinks = [
     icon: "/ic_location.svg",
   },
   {
-    name: "+62 831 1756 6712",
+    name: "+62 831 1765 6712",
     icon: "/ic_baseline-phone.svg",
   },
   {
