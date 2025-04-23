@@ -176,7 +176,7 @@ export const testimonials = [
 
 export const contactLinks = [
   {
-    name: "RT 03 RW 03, Desa Baregbeg, Kec. Lakbok, Kabupaten Ciamis, Jawa Barat 46385",
+    name: "RT 08 RW 03, Desa Baregbeg, Kec. Lakbok, Kabupaten Ciamis, Jawa Barat 46385",
     icon: "/ic_location.svg",
   },
   {
