@@ -4,30 +4,40 @@ import { client } from "@/sanity/lib/client";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://nabilacatering.web.id";
 
-  // Fetch all recipe slugs
-  const recipes = await client.fetch<{ slug: { current: string }; _updatedAt: string }[]>(
-    `*[_type == "recipe"]{ slug, _updatedAt }`
-  );
+  let recipeUrls: MetadataRoute.Sitemap = [];
+  let postUrls: MetadataRoute.Sitemap = [];
 
-  // Fetch all post slugs
-  const posts = await client.fetch<{ slug: { current: string }; _updatedAt: string }[]>(
-    `*[_type == "post"]{ slug, _updatedAt }`
-  );
+  try {
+    // Fetch all recipe slugs
+    const recipes = await client.fetch<{ slug: { current: string }; _updatedAt: string }[]>(
+      `*[_type == "recipe"]{ slug, _updatedAt }`
+    );
 
-  // Create sitemap entries
-  const recipeUrls = recipes.map((recipe) => ({
-    url: `${baseUrl}/recipe/${recipe.slug.current}`,
-    lastModified: new Date(recipe._updatedAt),
-    changeFrequency: "weekly" as const,
-    priority: 0.8,
-  }));
+    recipeUrls = recipes.map((recipe) => ({
+      url: `${baseUrl}/recipe/${recipe.slug.current}`,
+      lastModified: new Date(recipe._updatedAt),
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    }));
+  } catch (error) {
+    console.warn('Failed to fetch recipes for sitemap:', error);
+  }
 
-  const postUrls = posts.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug.current}`,
-    lastModified: new Date(post._updatedAt),
-    changeFrequency: "weekly" as const,
-    priority: 0.7,
-  }));
+  try {
+    // Fetch all post slugs
+    const posts = await client.fetch<{ slug: { current: string }; _updatedAt: string }[]>(
+      `*[_type == "post"]{ slug, _updatedAt }`
+    );
+
+    postUrls = posts.map((post) => ({
+      url: `${baseUrl}/blog/${post.slug.current}`,
+      lastModified: new Date(post._updatedAt),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    }));
+  } catch (error) {
+    console.warn('Failed to fetch posts for sitemap:', error);
+  }
 
   return [
     {

@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { getPosts, getOptimizedImageUrl } from '@/lib/sanity'
+import { Post } from '@/lib/types'
 import { Calendar, User } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -15,9 +16,16 @@ export const metadata: Metadata = {
 }
 
 export const revalidate = 3600 // Revalidate every hour
+export const dynamic = 'force-dynamic' // Use dynamic rendering as fallback
 
 export default async function BlogPage() {
-  const posts = await getPosts()
+  let posts: Post[] = []
+  
+  try {
+    posts = await getPosts()
+  } catch (error) {
+    console.warn('Failed to fetch posts:', error)
+  }
 
   return (
     <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">

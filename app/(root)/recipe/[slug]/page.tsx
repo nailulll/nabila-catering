@@ -10,54 +10,67 @@ type Props = {
 
 // Generate static params for all recipes
 export async function generateStaticParams() {
-  const recipes = await client.fetch<{ slug: { current: string } }[]>(
-    `*[_type == "recipe"]{ slug }`
-  )
-
-  return recipes.map((recipe) => ({
-    slug: recipe.slug.current,
-  }))
+  try {
+    const recipes = await client.fetch<{ slug: { current: string } }[]>(
+      `*[_type == "recipe"]{ slug }`
+    )
+    return recipes.map((recipe) => ({
+      slug: recipe.slug.current,
+    }))
+  } catch (error) {
+    console.warn('Failed to fetch recipes for static generation:', error)
+    return []
+  }
 }
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const recipe = await getRecipe(slug)
+  
+  try {
+    const recipe = await getRecipe(slug)
 
-  if (!recipe) {
-    return {
-      title: 'Recipe Not Found',
+    if (!recipe) {
+      return {
+        title: 'Recipe Not Found',
+      }
     }
-  }
 
-  const imageUrl = getImageUrl(recipe.mainImage)
+    const imageUrl = getImageUrl(recipe.mainImage)
 
-  return {
-    title: `${recipe.title} | Nabila Catering`,
-    description: recipe.description,
-    openGraph: {
-      title: recipe.title,
+    return {
+      title: `${recipe.title} | Nabila Catering`,
       description: recipe.description,
-      type: 'article',
-      images: [
-        {
-          url: imageUrl,
-          width: 1200,
-          height: 630,
-          alt: recipe.mainImage.alt || recipe.title,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: recipe.title,
-      description: recipe.description,
-      images: [imageUrl],
-    },
+      openGraph: {
+        title: recipe.title,
+        description: recipe.description,
+        type: 'article',
+        images: [
+          {
+            url: imageUrl,
+            width: 1200,
+            height: 630,
+            alt: recipe.mainImage.alt || recipe.title,
+          },
+        ],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: recipe.title,
+        description: recipe.description,
+        images: [imageUrl],
+      },
+    }
+  } catch (error) {
+    console.warn('Failed to generate metadata:', error)
+    return {
+      title: 'Recipe | Nabila Catering',
+    }
   }
 }
 
 export const revalidate = 3600 // Revalidate every hour
+export const dynamic = 'force-dynamic' // Use dynamic rendering as fallback
 
 export default async function RecipePage({ params }: Props) {
   const { slug } = await params

@@ -11,57 +11,70 @@ type Props = {
 
 // Generate static params for all posts
 export async function generateStaticParams() {
-  const posts = await client.fetch<{ slug: { current: string } }[]>(
-    `*[_type == "post"]{ slug }`
-  )
-
-  return posts.map((post) => ({
-    slug: post.slug.current,
-  }))
+  try {
+    const posts = await client.fetch<{ slug: { current: string } }[]>(
+      `*[_type == "post"]{ slug }`
+    )
+    return posts.map((post) => ({
+      slug: post.slug.current,
+    }))
+  } catch (error) {
+    console.warn('Failed to fetch posts for static generation:', error)
+    return []
+  }
 }
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const post = await getPost(slug)
+  
+  try {
+    const post = await getPost(slug)
 
-  if (!post) {
-    return {
-      title: 'Post Not Found',
+    if (!post) {
+      return {
+        title: 'Post Not Found',
+      }
     }
-  }
 
-  const imageUrl = getImageUrl(post.mainImage)
+    const imageUrl = getImageUrl(post.mainImage)
 
-  return {
-    title: `${post.title} | Nabila Catering Blog`,
-    description: post.excerpt,
-    authors: post.author ? [{ name: post.author }] : undefined,
-    openGraph: {
-      title: post.title,
+    return {
+      title: `${post.title} | Nabila Catering Blog`,
       description: post.excerpt,
-      type: 'article',
-      publishedTime: post.publishedAt || post._createdAt,
-      authors: post.author ? [post.author] : undefined,
-      images: [
-        {
-          url: imageUrl,
-          width: 1200,
-          height: 630,
-          alt: post.mainImage.alt || post.title,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.title,
-      description: post.excerpt,
-      images: [imageUrl],
-    },
+      authors: post.author ? [{ name: post.author }] : undefined,
+      openGraph: {
+        title: post.title,
+        description: post.excerpt,
+        type: 'article',
+        publishedTime: post.publishedAt || post._createdAt,
+        authors: post.author ? [post.author] : undefined,
+        images: [
+          {
+            url: imageUrl,
+            width: 1200,
+            height: 630,
+            alt: post.mainImage.alt || post.title,
+          },
+        ],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: post.title,
+        description: post.excerpt,
+        images: [imageUrl],
+      },
+    }
+  } catch (error) {
+    console.warn('Failed to generate metadata:', error)
+    return {
+      title: 'Blog Post | Nabila Catering',
+    }
   }
 }
 
 export const revalidate = 3600 // Revalidate every hour
+export const dynamic = 'force-dynamic' // Use dynamic rendering as fallback
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params

@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { getRecipes, getOptimizedImageUrl } from '@/lib/sanity'
+import { Recipe } from '@/lib/types'
 import { Clock, Users } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -15,9 +16,16 @@ export const metadata: Metadata = {
 }
 
 export const revalidate = 3600 // Revalidate every hour
+export const dynamic = 'force-dynamic' // Use dynamic rendering as fallback
 
 export default async function RecipesPage() {
-  const recipes = await getRecipes()
+  let recipes: Recipe[] = []
+  
+  try {
+    recipes = await getRecipes()
+  } catch (error) {
+    console.warn('Failed to fetch recipes:', error)
+  }
 
   return (
     <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
