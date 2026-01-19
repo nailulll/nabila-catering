@@ -6,6 +6,7 @@ import React from "react";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import WaButton from "@/components/wa-button";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Nabila Katering Lakbok | Catering Terbaik di Ciamis",
@@ -68,6 +69,7 @@ export default function RootLayout({
       </body>
 
       <GoogleAnalytics gaId="G-ZTE7F851H5" />
+      <Analytics />
     </html>
   );
 }
