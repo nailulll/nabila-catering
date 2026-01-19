@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { getRecipe, getOptimizedImageUrl, getImageUrl, client } from '@/lib/sanity'
+import { RECIPE_SLUGS_QUERY } from '@/lib/queries'
 import { Clock, Users, ChefHat } from 'lucide-react'
 
 type Props = {
@@ -11,11 +12,9 @@ type Props = {
 // Generate static params for all recipes
 export async function generateStaticParams() {
   try {
-    const recipes = await client.fetch<{ slug: { current: string } }[]>(
-      `*[_type == "recipe"]{ slug }`
-    )
+    const recipes = await client.fetch<{ slug: string }[]>(RECIPE_SLUGS_QUERY)
     return recipes.map((recipe) => ({
-      slug: recipe.slug.current,
+      slug: recipe.slug,
     }))
   } catch (error) {
     console.warn('Failed to fetch recipes for static generation:', error)
@@ -70,7 +69,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export const revalidate = 3600 // Revalidate every hour
-export const dynamic = 'force-dynamic' // Use dynamic rendering as fallback
 
 export default async function RecipePage({ params }: Props) {
   const { slug } = await params

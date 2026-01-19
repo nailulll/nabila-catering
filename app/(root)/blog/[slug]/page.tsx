@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { getPost, getOptimizedImageUrl, getImageUrl, client } from '@/lib/sanity'
+import { POST_SLUGS_QUERY } from '@/lib/queries'
 import { Calendar, User } from 'lucide-react'
 import PortableText from '@/components/portable-text'
 
@@ -12,11 +13,9 @@ type Props = {
 // Generate static params for all posts
 export async function generateStaticParams() {
   try {
-    const posts = await client.fetch<{ slug: { current: string } }[]>(
-      `*[_type == "post"]{ slug }`
-    )
+    const posts = await client.fetch<{ slug: string }[]>(POST_SLUGS_QUERY)
     return posts.map((post) => ({
-      slug: post.slug.current,
+      slug: post.slug,
     }))
   } catch (error) {
     console.warn('Failed to fetch posts for static generation:', error)
@@ -74,7 +73,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export const revalidate = 3600 // Revalidate every hour
-export const dynamic = 'force-dynamic' // Use dynamic rendering as fallback
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params

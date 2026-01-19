@@ -16,7 +16,6 @@ export const metadata: Metadata = {
 }
 
 export const revalidate = 3600 // Revalidate every hour
-export const dynamic = 'force-dynamic' // Use dynamic rendering as fallback
 
 export default async function BlogPage() {
   let posts: Post[] = []
