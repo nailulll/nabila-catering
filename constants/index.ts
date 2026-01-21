@@ -1,5 +1,15 @@
 import type { MenuItem, PricingPlan, Testimonial, ContactLink, MenuLink, SocialLink } from "@/types";
 
+// Contact information
+export const WHATSAPP_URL = "https://wa.me/6283117656712";
+export const BUSINESS_EMAIL = "nest.hub.studios@gmail.com";
+export const BUSINESS_PHONE = "+62 831 1765 6712";
+export const BUSINESS_ADDRESS = "RT 08 RW 03, Desa Baregbeg, Kec. Lakbok, Kabupaten Ciamis, Jawa Barat 46385";
+
+// NOTE: Update these URLs with actual social media profiles
+export const INSTAGRAM_URL = "https://www.instagram.com/nabilacatering";
+export const FACEBOOK_URL = "https://www.facebook.com/nabilacatering";
+
 export const menuLinks: MenuLink[] = [
   {
     name: "Beranda",
@@ -18,11 +28,11 @@ export const menuLinks: MenuLink[] = [
 export const socialLinks: SocialLink[] = [
   {
     name: "Instagram",
-    link: "https://www.instagram.com/",
+    link: INSTAGRAM_URL,
   },
   {
     name: "Facebook",
-    link: "https://www.facebook.com/",
+    link: FACEBOOK_URL,
   },
   {
     name: "Blog",
@@ -178,15 +188,15 @@ export const testimonials: Testimonial[] = [
 
 export const contactLinks: ContactLink[] = [
   {
-    name: "RT 08 RW 03, Desa Baregbeg, Kec. Lakbok, Kabupaten Ciamis, Jawa Barat 46385",
+    name: BUSINESS_ADDRESS,
     icon: "/ic_location.svg",
   },
   {
-    name: "+62 831 1765 6712",
+    name: BUSINESS_PHONE,
     icon: "/ic_baseline-phone.svg",
   },
   {
-    name: "nest.hub.studios@gmail.com",
+    name: BUSINESS_EMAIL,
     icon: "/ic_baseline-email.svg",
   },
 ];

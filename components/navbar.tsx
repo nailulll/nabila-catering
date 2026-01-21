@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Button } from "./ui/button";
-import { menuLinks } from "@/constants";
+import { menuLinks, WHATSAPP_URL } from "@/constants";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -28,7 +28,7 @@ const Navbar = () => {
       >
         <div className="max-w-7xl flex justify-between items-center mx-auto">
           <div>
-            <Link href="/" aria-label="Kembali ke beranda">
+            <Link href="/" aria-label="Logo Nabila Katering - Kembali ke beranda">
               <Image
                 src="/logo.png"
                 alt="Logo Nabila Katering"
@@ -50,7 +50,7 @@ const Navbar = () => {
           </div>
           <div className="hidden md:block">
             <Button size="icon" asChild aria-label="Hubungi kami via chat">
-              <a href="https://wa.me/6283117656712" target="_blank" rel="noopener noreferrer">
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
                 <Image src="/chat.svg" alt="" width={17} height={17} aria-hidden="true" />
               </a>
             </Button>

@@ -1,4 +1,4 @@
-import { pricingPlans } from "@/constants";
+import { pricingPlans, WHATSAPP_URL } from "@/constants";
 import { Button } from "@/components/ui/button";
 import { Check, CircleHelp } from "lucide-react";
 import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
@@ -50,7 +50,7 @@ export default function Pricing() {
               asChild
             >
               <a 
-                href="https://wa.me/6283117656712"
+                href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${pricing.button.text} - ${pricing.title.name}`}

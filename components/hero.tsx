@@ -3,6 +3,7 @@ import { Cover } from "./ui/cover";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import ShinyButton from "./ui/shiny-button";
+import { WHATSAPP_URL } from "@/constants";
 
 const Hero = () => {
   return (
@@ -28,7 +29,7 @@ const Hero = () => {
       <div className="flex gap-5 justify-center mt-10">
         <Button className="text-white py-5" asChild>
           <a 
-            href="https://wa.me/6283117656712" 
+            href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Hubungi kami melalui WhatsApp"

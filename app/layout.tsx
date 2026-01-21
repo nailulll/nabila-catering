@@ -7,6 +7,7 @@ import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import WaButton from "@/components/wa-button";
 import { Analytics } from "@vercel/analytics/next";
+import { INSTAGRAM_URL, FACEBOOK_URL, WHATSAPP_URL, BUSINESS_ADDRESS } from "@/constants";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://nabilacatering.web.id'),
@@ -127,9 +128,10 @@ export default function RootLayout({
       "opens": "08:00",
       "closes": "20:00"
     },
+    // NOTE: Update these URLs with actual social media profile URLs
     "sameAs": [
-      "https://www.instagram.com/nabilacatering",
-      "https://www.facebook.com/nabilacatering"
+      INSTAGRAM_URL,
+      FACEBOOK_URL
     ]
   };
 
