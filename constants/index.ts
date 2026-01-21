@@ -1,15 +1,23 @@
 export const menuLinks = [
   {
     name: "Beranda",
-    link: "#top",
+    link: "/#top",
   },
   {
     name: "Harga",
-    link: "#pricing",
+    link: "/#pricing",
   },
   {
     name: "Kontak",
-    link: "#contact",
+    link: "/#contact",
+  },
+  {
+    name: "Blog",
+    link: "/blog",
+  },
+  {
+    name: "Resep",
+    link: "/recipe",
   },
 ];
 

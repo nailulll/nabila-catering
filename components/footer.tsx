@@ -54,9 +54,9 @@ export default function Footer() {
       </div>
       <hr className="border-dark mt-20" />
       <h6 className="font-light mt-5 text-xs lg:text-base">
-        Copyright {new Date().getFullYear()}.{" "}
-        <span className="text-primary">Nabila Catering</span>. All Right
-        Reserved
+        Hak Cipta {new Date().getFullYear()}.{" "}
+        <span className="text-primary">Nabila Catering</span>. Seluruh Hak Cipta
+        Dilindungi
       </h6>
     </footer>
   );

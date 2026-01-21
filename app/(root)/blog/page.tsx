@@ -1,46 +1,49 @@
-import { Metadata } from 'next'
-import Link from 'next/link'
-import Image from 'next/image'
-import { getPosts, getOptimizedImageUrl } from '@/lib/sanity'
-import { Post } from '@/lib/types'
-import { Calendar, User } from 'lucide-react'
+import { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
+import { getPosts, getOptimizedImageUrl } from "@/lib/sanity";
+import { Post } from "@/lib/types";
+import { Calendar, User } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Blog | Nabila Catering',
-  description: 'Read our latest articles, tips, and insights about food, cooking, and catering.',
+  title: "Blog | Nabila Catering",
+  description:
+    "Baca artikel terbaru, tips, dan wawasan kami seputar makanan, memasak, dan katering.",
   openGraph: {
-    title: 'Blog | Nabila Catering',
-    description: 'Read our latest articles, tips, and insights about food, cooking, and catering.',
-    type: 'website',
+    title: "Blog | Nabila Catering",
+    description:
+      "Baca artikel terbaru, tips, dan wawasan kami seputar makanan, memasak, dan katering.",
+    type: "website",
   },
-}
+};
 
-export const revalidate = 3600 // Revalidate every hour
+export const revalidate = 3600; // Revalidate every hour
 
 export default async function BlogPage() {
-  let posts: Post[] = []
-  
+  let posts: Post[] = [];
+
   try {
-    posts = await getPosts()
+    posts = await getPosts();
   } catch (error) {
-    console.warn('Failed to fetch posts:', error)
+    console.warn("Failed to fetch posts:", error);
   }
 
   return (
     <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Our Blog
-          </h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Blog Kami</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Discover tips, insights, and stories from the world of food and catering.
+            Temukan tips, wawasan, dan cerita seputar dunia makanan dan
+            katering.
           </p>
         </div>
 
         {posts.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">No articles available yet. Check back soon!</p>
+            <p className="text-gray-500 text-lg">
+              Belum ada artikel. Cek kembali nanti!
+            </p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -77,11 +80,14 @@ export default async function BlogPage() {
                       <div className="flex items-center gap-1">
                         <Calendar className="w-4 h-4" />
                         <span>
-                          {new Date(post.publishedAt).toLocaleDateString('en-US', {
-                            year: 'numeric',
-                            month: 'short',
-                            day: 'numeric',
-                          })}
+                          {new Date(post.publishedAt).toLocaleDateString(
+                            "id-ID",
+                            {
+                              year: "numeric",
+                              month: "long",
+                              day: "numeric",
+                            },
+                          )}
                         </span>
                       </div>
                     )}
@@ -105,5 +111,5 @@ export default async function BlogPage() {
         )}
       </div>
     </div>
-  )
+  );
 }

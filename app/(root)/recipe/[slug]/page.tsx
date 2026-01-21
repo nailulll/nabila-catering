@@ -1,41 +1,46 @@
-import { Metadata } from 'next'
-import { notFound } from 'next/navigation'
-import Image from 'next/image'
-import { getRecipe, getOptimizedImageUrl, getImageUrl, client } from '@/lib/sanity'
-import { RECIPE_SLUGS_QUERY } from '@/lib/queries'
-import { Clock, Users, ChefHat } from 'lucide-react'
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import Image from "next/image";
+import {
+  getRecipe,
+  getOptimizedImageUrl,
+  getImageUrl,
+  client,
+} from "@/lib/sanity";
+import { RECIPE_SLUGS_QUERY } from "@/lib/queries";
+import { Clock, Users, ChefHat } from "lucide-react";
 
 type Props = {
-  params: Promise<{ slug: string }>
-}
+  params: Promise<{ slug: string }>;
+};
 
 // Generate static params for all recipes
 export async function generateStaticParams() {
   try {
-    const recipes = await client.fetch<{ slug: string }[]>(RECIPE_SLUGS_QUERY)
+    const recipes = await client.fetch<{ slug: string }[]>(RECIPE_SLUGS_QUERY);
     return recipes.map((recipe) => ({
       slug: recipe.slug,
-    }))
+    }));
   } catch (error) {
-    console.warn('Failed to fetch recipes for static generation:', error)
-    return []
+    console.warn("Failed to fetch recipes for static generation:", error);
+    return [];
   }
 }
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params
-  
+  const { slug } = await params;
+
   try {
-    const recipe = await getRecipe(slug)
+    const recipe = await getRecipe(slug);
 
     if (!recipe) {
       return {
-        title: 'Recipe Not Found',
-      }
+        title: "Resep Tidak Ditemukan",
+      };
     }
 
-    const imageUrl = getImageUrl(recipe.mainImage)
+    const imageUrl = getImageUrl(recipe.mainImage);
 
     return {
       title: `${recipe.title} | Nabila Catering`,
@@ -43,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       openGraph: {
         title: recipe.title,
         description: recipe.description,
-        type: 'article',
+        type: "article",
         images: [
           {
             url: imageUrl,
@@ -54,40 +59,40 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         ],
       },
       twitter: {
-        card: 'summary_large_image',
+        card: "summary_large_image",
         title: recipe.title,
         description: recipe.description,
         images: [imageUrl],
       },
-    }
+    };
   } catch (error) {
-    console.warn('Failed to generate metadata:', error)
+    console.warn("Failed to generate metadata:", error);
     return {
-      title: 'Recipe | Nabila Catering',
-    }
+      title: "Resep | Nabila Catering",
+    };
   }
 }
 
-export const revalidate = 3600 // Revalidate every hour
+export const revalidate = 3600; // Revalidate every hour
 
 export default async function RecipePage({ params }: Props) {
-  const { slug } = await params
-  const recipe = await getRecipe(slug)
+  const { slug } = await params;
+  const recipe = await getRecipe(slug);
 
   if (!recipe) {
-    notFound()
+    notFound();
   }
 
   // Generate JSON-LD structured data for Recipe
   const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Recipe',
+    "@context": "https://schema.org",
+    "@type": "Recipe",
     name: recipe.title,
     description: recipe.description,
     image: getImageUrl(recipe.mainImage),
     author: {
-      '@type': 'Organization',
-      name: 'Nabila Catering',
+      "@type": "Organization",
+      name: "Nabila Catering",
     },
     datePublished: recipe.publishedAt || recipe._createdAt,
     prepTime: `PT${recipe.prepTime}M`,
@@ -95,18 +100,18 @@ export default async function RecipePage({ params }: Props) {
     totalTime: `PT${recipe.prepTime + recipe.cookTime}M`,
     recipeYield: `${recipe.servings} servings`,
     recipeIngredient: recipe.ingredients.map(
-      (ing) => `${ing.quantity}${ing.unit ? ' ' + ing.unit : ''} ${ing.name}`
+      (ing) => `${ing.quantity}${ing.unit ? " " + ing.unit : ""} ${ing.name}`,
     ),
     recipeInstructions: recipe.instructions
       .sort((a, b) => a.step - b.step)
       .map((inst) => ({
-        '@type': 'HowToStep',
+        "@type": "HowToStep",
         text: inst.instruction,
         position: inst.step,
       })),
     ...(recipe.nutritionalInfo && {
       nutrition: {
-        '@type': 'NutritionInformation',
+        "@type": "NutritionInformation",
         ...(recipe.nutritionalInfo.calories && {
           calories: `${recipe.nutritionalInfo.calories} calories`,
         }),
@@ -131,7 +136,7 @@ export default async function RecipePage({ params }: Props) {
       recipe.categories.length > 0 && {
         recipeCategory: recipe.categories.map((cat) => cat.title),
       }),
-  }
+  };
 
   return (
     <>
@@ -149,20 +154,20 @@ export default async function RecipePage({ params }: Props) {
               {recipe.title}
             </h1>
             <p className="text-lg text-gray-600 mb-6">{recipe.description}</p>
-            
+
             {/* Recipe Meta */}
             <div className="flex flex-wrap gap-6 text-gray-700">
               <div className="flex items-center gap-2">
                 <ChefHat className="w-5 h-5 text-[#F95454]" />
-                <span>Prep: {recipe.prepTime} min</span>
+                <span>Persiapan: {recipe.prepTime} menit</span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-5 h-5 text-[#F95454]" />
-                <span>Cook: {recipe.cookTime} min</span>
+                <span>Memasak: {recipe.cookTime} menit</span>
               </div>
               <div className="flex items-center gap-2">
                 <Users className="w-5 h-5 text-[#F95454]" />
-                <span>{recipe.servings} servings</span>
+                <span>{recipe.servings} porsi</span>
               </div>
             </div>
 
@@ -194,56 +199,69 @@ export default async function RecipePage({ params }: Props) {
           </div>
 
           {/* Nutritional Information */}
-          {recipe.nutritionalInfo && Object.keys(recipe.nutritionalInfo).length > 0 && (
-            <div className="bg-gray-50 rounded-lg p-6 mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                Nutritional Information
-              </h2>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                {recipe.nutritionalInfo.calories && (
-                  <div>
-                    <span className="text-gray-600">Calories:</span>
-                    <span className="ml-2 font-semibold">{recipe.nutritionalInfo.calories}</span>
-                  </div>
-                )}
-                {recipe.nutritionalInfo.protein && (
-                  <div>
-                    <span className="text-gray-600">Protein:</span>
-                    <span className="ml-2 font-semibold">{recipe.nutritionalInfo.protein}g</span>
-                  </div>
-                )}
-                {recipe.nutritionalInfo.carbohydrates && (
-                  <div>
-                    <span className="text-gray-600">Carbs:</span>
-                    <span className="ml-2 font-semibold">{recipe.nutritionalInfo.carbohydrates}g</span>
-                  </div>
-                )}
-                {recipe.nutritionalInfo.fat && (
-                  <div>
-                    <span className="text-gray-600">Fat:</span>
-                    <span className="ml-2 font-semibold">{recipe.nutritionalInfo.fat}g</span>
-                  </div>
-                )}
-                {recipe.nutritionalInfo.fiber && (
-                  <div>
-                    <span className="text-gray-600">Fiber:</span>
-                    <span className="ml-2 font-semibold">{recipe.nutritionalInfo.fiber}g</span>
-                  </div>
-                )}
-                {recipe.nutritionalInfo.sugar && (
-                  <div>
-                    <span className="text-gray-600">Sugar:</span>
-                    <span className="ml-2 font-semibold">{recipe.nutritionalInfo.sugar}g</span>
-                  </div>
-                )}
+          {recipe.nutritionalInfo &&
+            Object.keys(recipe.nutritionalInfo).length > 0 && (
+              <div className="bg-gray-50 rounded-lg p-6 mb-8">
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+                  Informasi Gizi
+                </h2>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  {recipe.nutritionalInfo.calories && (
+                    <div>
+                      <span className="text-gray-600">Kalori:</span>
+                      <span className="ml-2 font-semibold">
+                        {recipe.nutritionalInfo.calories}
+                      </span>
+                    </div>
+                  )}
+                  {recipe.nutritionalInfo.protein && (
+                    <div>
+                      <span className="text-gray-600">Protein:</span>
+                      <span className="ml-2 font-semibold">
+                        {recipe.nutritionalInfo.protein}g
+                      </span>
+                    </div>
+                  )}
+                  {recipe.nutritionalInfo.carbohydrates && (
+                    <div>
+                      <span className="text-gray-600">Karbohidrat:</span>
+                      <span className="ml-2 font-semibold">
+                        {recipe.nutritionalInfo.carbohydrates}g
+                      </span>
+                    </div>
+                  )}
+                  {recipe.nutritionalInfo.fat && (
+                    <div>
+                      <span className="text-gray-600">Lemak:</span>
+                      <span className="ml-2 font-semibold">
+                        {recipe.nutritionalInfo.fat}g
+                      </span>
+                    </div>
+                  )}
+                  {recipe.nutritionalInfo.fiber && (
+                    <div>
+                      <span className="text-gray-600">Serat:</span>
+                      <span className="ml-2 font-semibold">
+                        {recipe.nutritionalInfo.fiber}g
+                      </span>
+                    </div>
+                  )}
+                  {recipe.nutritionalInfo.sugar && (
+                    <div>
+                      <span className="text-gray-600">Gula:</span>
+                      <span className="ml-2 font-semibold">
+                        {recipe.nutritionalInfo.sugar}g
+                      </span>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
           {/* Ingredients */}
           <section className="mb-8">
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              Ingredients
+              Bahan-bahan
             </h2>
             <ul className="space-y-2">
               {recipe.ingredients.map((ingredient, index) => (
@@ -261,7 +279,7 @@ export default async function RecipePage({ params }: Props) {
           {/* Instructions */}
           <section className="mb-8">
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              Instructions
+              Cara Membuat
             </h2>
             <ol className="space-y-4">
               {recipe.instructions
@@ -271,7 +289,9 @@ export default async function RecipePage({ params }: Props) {
                     <span className="flex-shrink-0 w-8 h-8 bg-[#F95454] text-white rounded-full flex items-center justify-center font-semibold">
                       {instruction.step}
                     </span>
-                    <p className="text-gray-700 pt-1">{instruction.instruction}</p>
+                    <p className="text-gray-700 pt-1">
+                      {instruction.instruction}
+                    </p>
                   </li>
                 ))}
             </ol>
@@ -279,5 +299,5 @@ export default async function RecipePage({ params }: Props) {
         </div>
       </article>
     </>
-  )
+  );
 }

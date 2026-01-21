@@ -28,7 +28,7 @@ const Navbar = () => {
           <ul className="flex gap-10 text-lg">
             {menuLinks.map((menu) => (
               <li key={menu.name}>
-                <a href={menu.link}>{menu.name}</a>
+                <Link href={menu.link}>{menu.name}</Link>
               </li>
             ))}
           </ul>

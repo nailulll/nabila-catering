@@ -1,46 +1,49 @@
-import { Metadata } from 'next'
-import Link from 'next/link'
-import Image from 'next/image'
-import { getRecipes, getOptimizedImageUrl } from '@/lib/sanity'
-import { Recipe } from '@/lib/types'
-import { Clock, Users } from 'lucide-react'
+import { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
+import { getRecipes, getOptimizedImageUrl } from "@/lib/sanity";
+import { Recipe } from "@/lib/types";
+import { Clock, Users } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Recipes | Nabila Catering',
-  description: 'Discover delicious recipes from Nabila Catering. Browse our collection of carefully crafted dishes.',
+  title: "Resep | Nabila Catering",
+  description:
+    "Temukan resep lezat dari Nabila Catering. Telusuri koleksi hidangan kami yang dibuat dengan hati-hati.",
   openGraph: {
-    title: 'Recipes | Nabila Catering',
-    description: 'Discover delicious recipes from Nabila Catering. Browse our collection of carefully crafted dishes.',
-    type: 'website',
+    title: "Resep | Nabila Catering",
+    description:
+      "Temukan resep lezat dari Nabila Catering. Telusuri koleksi hidangan kami yang dibuat dengan hati-hati.",
+    type: "website",
   },
-}
+};
 
-export const revalidate = 3600 // Revalidate every hour
+export const revalidate = 3600; // Revalidate every hour
 
 export default async function RecipesPage() {
-  let recipes: Recipe[] = []
-  
+  let recipes: Recipe[] = [];
+
   try {
-    recipes = await getRecipes()
+    recipes = await getRecipes();
   } catch (error) {
-    console.warn('Failed to fetch recipes:', error)
+    console.warn("Failed to fetch recipes:", error);
   }
 
   return (
     <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Our Recipes
-          </h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Resep Kami</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Explore our collection of delicious recipes, from traditional favorites to innovative creations.
+            Jelajahi koleksi resep lezat kami, dari favorit tradisional hingga
+            kreasi inovatif.
           </p>
         </div>
 
         {recipes.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">No recipes available yet. Check back soon!</p>
+            <p className="text-gray-500 text-lg">
+              Belum ada resep. Cek kembali nanti!
+            </p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -69,11 +72,11 @@ export default async function RecipesPage() {
                   <div className="flex items-center justify-between text-sm text-gray-500">
                     <div className="flex items-center gap-1">
                       <Clock className="w-4 h-4" />
-                      <span>{recipe.prepTime + recipe.cookTime} mins</span>
+                      <span>{recipe.prepTime + recipe.cookTime} menit</span>
                     </div>
                     <div className="flex items-center gap-1">
                       <Users className="w-4 h-4" />
-                      <span>{recipe.servings} servings</span>
+                      <span>{recipe.servings} porsi</span>
                     </div>
                   </div>
                   {recipe.categories && recipe.categories.length > 0 && (
@@ -95,5 +98,5 @@ export default async function RecipesPage() {
         )}
       </div>
     </div>
-  )
+  );
 }
