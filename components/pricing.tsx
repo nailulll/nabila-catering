@@ -8,20 +8,21 @@ export default function Pricing() {
     <section
       className={"text-center md:py-20 py-10 lg:mx-auto mx-5"}
       id="pricing"
+      aria-labelledby="pricing-heading"
     >
-      <h1 className="md:text-4xl text-xl max-w-4xl mx-auto font-semibold text-dark">
+      <h2 id="pricing-heading" className="md:text-4xl text-xl max-w-4xl mx-auto font-semibold text-dark">
         Paket Katering
-      </h1>
+      </h2>
       <p className="md:text-lg text-sm font-light max-w-xl mx-auto mt-5 tracking-widest">
         Pilih Paket Katering yang Sesuai dengan Kebutuhan Anda
       </p>
       <div className="md:max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-5 mt-20">
         {pricingPlans.map((pricing, index) => (
-          <div
+          <article
             key={index}
             className="border border-primary rounded-3xl text-left xl:p-14 p-10"
           >
-            <h1
+            <h3
               className={`md:text-2xl text-xl font-semibold gap-1 flex items-center ${
                 pricing.title.active ? "text-primary" : "text-dark"
               }`}
@@ -30,11 +31,11 @@ export default function Pricing() {
               {pricing.title.question && (
                 <AnimatedTooltip
                   id={`title-${index}`}
-                  tooltip="Prices can change depending on what you choose"
-                  node={<CircleHelp className="fill-dark text-white" />}
+                  tooltip="Harga bisa berubah tergantung pilihan menu"
+                  node={<CircleHelp className="fill-dark text-white" aria-label="Informasi harga" />}
                 />
               )}
-            </h1>
+            </h3>
             <p className="md:text-sm text-xs font-light mt-5 lg:mt-10 tracking-widest lg:h-28">
               {pricing.description}
             </p>
@@ -46,34 +47,43 @@ export default function Pricing() {
               className={`text-white py-7 w-full ${
                 pricing.button.active ? "bg-primary" : "bg-dark"
               }`}
+              asChild
             >
-              {pricing.button.text}
+              <a 
+                href="https://wa.me/6283117656712"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${pricing.button.text} - ${pricing.title.name}`}
+              >
+                {pricing.button.text}
+              </a>
             </Button>
-            <div className="mt-10 space-y-5">
+            <ul className="mt-10 space-y-5">
               {pricing.features.map((feature, idx) => (
-                <div key={idx} className="mb-3 flex items-center gap-3">
+                <li key={idx} className="mb-3 flex items-center gap-3">
                   <Check
                     strokeWidth={4}
                     className={`${
                       feature.active ? "text-primary" : "text-dark"
                     }`}
                     size={18}
+                    aria-hidden="true"
                   />
                   <span className="text-sm text-gray-600 flex">
                     {feature.name}
                     {/*@ts-ignore*/}
                     {feature?.question && (
                       <AnimatedTooltip
-                        id={`title-${index}`}
-                        tooltip="Prices can change depending on what you choose"
-                        node={<CircleHelp className="fill-dark text-white" />}
+                        id={`feature-${index}-${idx}`}
+                        tooltip="Harga bisa berubah tergantung pilihan menu"
+                        node={<CircleHelp className="fill-dark text-white" aria-label="Informasi harga" />}
                       />
                     )}
                   </span>
-                </div>
+                </li>
               ))}
-            </div>
-          </div>
+            </ul>
+          </article>
         ))}
       </div>
     </section>

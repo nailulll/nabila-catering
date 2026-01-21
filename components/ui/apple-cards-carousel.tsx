@@ -106,6 +106,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
             className="relative z-40 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
             onClick={scrollLeft}
             disabled={!canScrollLeft}
+            aria-label="Scroll ke kiri untuk melihat menu sebelumnya"
           >
             <IconArrowNarrowLeft className="h-6 w-6 text-gray-500" />
           </button>
@@ -113,6 +114,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
             className="relative z-40 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
             onClick={scrollRight}
             disabled={!canScrollRight}
+            aria-label="Scroll ke kanan untuk melihat menu selanjutnya"
           >
             <IconArrowNarrowRight className="h-6 w-6 text-gray-500" />
           </button>
@@ -126,6 +128,7 @@ export const Card = ({ card, layout = false }: { card: Card; layout?: boolean; }
     <motion.button
       layoutId={layout ? `card-${card.title}` : undefined}
       className="rounded-3xl bg-gray-100 dark:bg-neutral-900 h-96 w-72 md:h-[40rem] md:w-96 overflow-hidden flex flex-col items-start justify-start relative z-10"
+      aria-label={`${card.title} - ${card.category}`}
     >
       <div
         className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-30 pointer-events-none" />
@@ -145,9 +148,10 @@ export const Card = ({ card, layout = false }: { card: Card; layout?: boolean; }
       </div>
       <BlurImage
         src={card.src}
-        alt={card.title}
+        alt={`${card.title} - menu catering Nabila`}
         fill
         className="object-cover absolute z-10 inset-0"
+        sizes="(max-width: 768px) 288px, 384px"
       />
     </motion.button>
   );
