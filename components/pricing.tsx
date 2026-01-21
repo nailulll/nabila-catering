@@ -71,8 +71,7 @@ export default function Pricing() {
                   />
                   <span className="text-sm text-gray-600 flex">
                     {feature.name}
-                    {/*@ts-ignore*/}
-                    {feature?.question && (
+                    {feature.question && (
                       <AnimatedTooltip
                         id={`feature-${index}-${idx}`}
                         tooltip="Harga bisa berubah tergantung pilihan menu"

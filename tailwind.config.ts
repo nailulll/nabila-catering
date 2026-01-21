@@ -124,9 +124,5 @@ const config: Config = {
       );
     },
   ],
-  // Optimize for production
-  ...(process.env.NODE_ENV === 'production' && {
-    safelist: [],
-  }),
 };
 export default config;

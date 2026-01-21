@@ -1,4 +1,6 @@
-export const menuLinks = [
+import type { MenuItem, PricingPlan, Testimonial, ContactLink, MenuLink, SocialLink } from "@/types";
+
+export const menuLinks: MenuLink[] = [
   {
     name: "Beranda",
     link: "#top",
@@ -13,7 +15,7 @@ export const menuLinks = [
   },
 ];
 
-export const socialLinks = [
+export const socialLinks: SocialLink[] = [
   {
     name: "Instagram",
     link: "https://www.instagram.com/",
@@ -28,7 +30,7 @@ export const socialLinks = [
   },
 ];
 
-export const menus = [
+export const menus: MenuItem[] = [
   {
     title: "Gorengan",
     category: "Rp 1.000 - Rp 3.000",
@@ -51,7 +53,7 @@ export const menus = [
   },
 ];
 
-export const pricingPlans = [
+export const pricingPlans: PricingPlan[] = [
   {
     title: {
       name: "Paket Dasar",
@@ -153,7 +155,7 @@ export const pricingPlans = [
   },
 ];
 
-export const testimonials = [
+export const testimonials: Testimonial[] = [
   {
     quote:
       "Makanannya enak banget, porsinya pas, dan selalu datang tepat waktu. Ayam bakar sambal matahnya juara banget!",
@@ -174,7 +176,7 @@ export const testimonials = [
   },
 ];
 
-export const contactLinks = [
+export const contactLinks: ContactLink[] = [
   {
     name: "RT 08 RW 03, Desa Baregbeg, Kec. Lakbok, Kabupaten Ciamis, Jawa Barat 46385",
     icon: "/ic_location.svg",

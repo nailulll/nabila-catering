@@ -72,9 +72,6 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    google: 'google-site-verification-code',
-  },
   alternates: {
     canonical: 'https://nabilacatering.web.id',
   },
@@ -131,8 +128,8 @@ export default function RootLayout({
       "closes": "20:00"
     },
     "sameAs": [
-      "https://www.instagram.com/",
-      "https://www.facebook.com/"
+      "https://www.instagram.com/nabilacatering",
+      "https://www.facebook.com/nabilacatering"
     ]
   };
 
