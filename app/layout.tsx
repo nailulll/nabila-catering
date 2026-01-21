@@ -2,7 +2,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import React from "react";
+import React, { Suspense } from "react";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import WaButton from "@/components/wa-button";
@@ -159,8 +159,10 @@ export default function RootLayout({
         <main>{children}</main>
         <WaButton />
         <Footer />
-        <GoogleAnalytics gaId="G-ZTE7F851H5" />
-        <Analytics />
+        <Suspense fallback={null}>
+          <GoogleAnalytics gaId="G-ZTE7F851H5" />
+          <Analytics />
+        </Suspense>
       </body>
     </html>
   );
