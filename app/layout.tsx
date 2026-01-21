@@ -1,8 +1,8 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { Poppins } from "next/font/google";
 import "./globals.css";
 import React from "react";
 import { Analytics } from "@vercel/analytics/next";
+import { Poppins } from "next/font/google";
 
 const fonts = Poppins({
   subsets: ["latin"],
@@ -13,7 +13,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="id" className="scroll-smooth">
       <body
         className={`${fonts.className} bg-white bg-dot-black/[0.2] overflow-x-hidden`}
       >

@@ -30,7 +30,7 @@ export default function Pricing() {
               {pricing.title.question && (
                 <AnimatedTooltip
                   id={`title-${index}`}
-                  tooltip="Prices can change depending on what you choose"
+                  tooltip="Harga bisa berubah tergantung pilihan anda"
                   node={<CircleHelp className="fill-dark text-white" />}
                 />
               )}
@@ -65,7 +65,7 @@ export default function Pricing() {
                     {feature?.question && (
                       <AnimatedTooltip
                         id={`title-${index}`}
-                        tooltip="Prices can change depending on what you choose"
+                        tooltip="Harga bisa berubah tergantung pilihan anda"
                         node={<CircleHelp className="fill-dark text-white" />}
                       />
                     )}
