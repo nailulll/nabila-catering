@@ -35,6 +35,17 @@ body {
     --ring: 0 93.2% 65.3%;
     --radius: 0.75rem;
   }
+  
+  /* Focus indicators for accessibility */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
+  
+  /* Ensure buttons and links have visible focus states */
+  button:focus-visible,
+  a:focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
 }
 
 ::-webkit-scrollbar {
@@ -43,4 +54,21 @@ body {
 
 ::-webkit-scrollbar-thumb {
   @apply w-1 rounded-lg bg-primary;
+}
+
+/* Improve text rendering */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

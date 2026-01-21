@@ -156,7 +156,7 @@ export default function RootLayout({
             Hanya menerima pesanan dari daerah Ciamis, Lakbok.
           </p>
         </div>
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
         <WaButton />
         <Footer />
         <Suspense fallback={null}>
