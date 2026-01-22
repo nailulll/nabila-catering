@@ -1,11 +1,12 @@
 import { contactLinks } from "@/constants";
+import Image from "next/image";
 
 export default function ContactUs() {
   return (
-    <section className="flex flex-col items-center" id="contact">
-      <h1 className="md:text-4xl text-xl max-w-4xl mx-auto font-semibold text-dark">
+    <section className="flex flex-col items-center" id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading" className="md:text-4xl text-xl max-w-4xl mx-auto font-semibold text-dark">
         Kontak Kami
-      </h1>
+      </h2>
       <p className="md:text-lg text-sm font-light max-w-xl mx-auto lg:mt-5 tracking-widest leading-loose">
         Temukan kami atau Hubungi Kami Langsung!
       </p>
@@ -15,15 +16,24 @@ export default function ContactUs() {
           width="600"
           height="450"
           style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
           className="lg:w-1/2 w-full rounded-tr-xl rounded-br-xl"
+          title="Lokasi Nabila Katering di Google Maps"
         />
         <div className="mx-5 lg:mx-0">
           <ul className="font-light space-y-7">
             {contactLinks.map((contact) => (
               <li className="flex gap-2" key={contact.name}>
-                <img src={contact.icon} alt="icon location" />
-                {contact.name}
+                <Image 
+                  src={contact.icon} 
+                  alt="" 
+                  width={24}
+                  height={24}
+                  aria-hidden="true"
+                />
+                <span>{contact.name}</span>
               </li>
             ))}
           </ul>

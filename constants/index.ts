@@ -1,4 +1,24 @@
-export const menuLinks = [
+import type {
+  MenuItem,
+  PricingPlan,
+  Testimonial,
+  ContactLink,
+  MenuLink,
+  SocialLink,
+} from "@/types";
+
+// Contact information
+export const WHATSAPP_URL = "https://wa.me/6283117656712";
+export const BUSINESS_EMAIL = "nest.hub.studios@gmail.com";
+export const BUSINESS_PHONE = "+62 831 1765 6712";
+export const BUSINESS_ADDRESS =
+  "RT 08 RW 03, Desa Baregbeg, Kec. Lakbok, Kabupaten Ciamis, Jawa Barat 46385";
+
+// NOTE: Update these URLs with actual social media profiles
+export const INSTAGRAM_URL = "https://www.instagram.com";
+export const FACEBOOK_URL = "https://www.facebook.com";
+
+export const menuLinks: MenuLink[] = [
   {
     name: "Beranda",
     link: "#top",
@@ -13,14 +33,14 @@ export const menuLinks = [
   },
 ];
 
-export const socialLinks = [
+export const socialLinks: SocialLink[] = [
   {
     name: "Instagram",
-    link: "https://www.instagram.com/",
+    link: INSTAGRAM_URL,
   },
   {
     name: "Facebook",
-    link: "https://www.facebook.com/",
+    link: FACEBOOK_URL,
   },
   {
     name: "Blog",
@@ -28,7 +48,7 @@ export const socialLinks = [
   },
 ];
 
-export const menus = [
+export const menus: MenuItem[] = [
   {
     title: "Gorengan",
     category: "Rp 1.000 - Rp 3.000",
@@ -51,7 +71,7 @@ export const menus = [
   },
 ];
 
-export const pricingPlans = [
+export const pricingPlans: PricingPlan[] = [
   {
     title: {
       name: "Paket Dasar",
@@ -153,7 +173,7 @@ export const pricingPlans = [
   },
 ];
 
-export const testimonials = [
+export const testimonials: Testimonial[] = [
   {
     quote:
       "Makanannya enak banget, porsinya pas, dan selalu datang tepat waktu. Ayam bakar sambal matahnya juara banget!",
@@ -174,17 +194,17 @@ export const testimonials = [
   },
 ];
 
-export const contactLinks = [
+export const contactLinks: ContactLink[] = [
   {
-    name: "RT 08 RW 03, Desa Baregbeg, Kec. Lakbok, Kabupaten Ciamis, Jawa Barat 46385",
+    name: BUSINESS_ADDRESS,
     icon: "/ic_location.svg",
   },
   {
-    name: "+62 831 1765 6712",
+    name: BUSINESS_PHONE,
     icon: "/ic_baseline-phone.svg",
   },
   {
-    name: "nest.hub.studios@gmail.com",
+    name: BUSINESS_EMAIL,
     icon: "/ic_baseline-email.svg",
   },
 ];

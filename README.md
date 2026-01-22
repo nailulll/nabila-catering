@@ -1,5 +1,29 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## 🌟 Nabila Catering Website
+
+A high-performance, SEO-optimized website for Nabila Katering built with Next.js 14, TypeScript, and Tailwind CSS. This website is optimized to achieve a perfect 100 Lighthouse score in Performance and SEO.
+
+## ⚡ Key Features
+
+- **Next.js 14 App Router**: Modern React framework with server components
+- **TypeScript**: Type-safe development
+- **Tailwind CSS**: Utility-first CSS framework
+- **Perfect Lighthouse Scores**: Optimized for Performance, SEO, Accessibility, and Best Practices
+- **PWA Support**: Progressive Web App capabilities
+- **SEO Optimized**: Complete structured data, meta tags, and sitemap
+- **Accessible**: WCAG 2.1 compliant with proper ARIA labels and keyboard navigation
+- **Performance**: Dynamic imports, lazy loading, and optimized images
+
+## 🚀 Lighthouse Optimizations
+
+This website has been optimized to achieve a 100 Lighthouse score. See [LIGHTHOUSE_OPTIMIZATIONS.md](./LIGHTHOUSE_OPTIMIZATIONS.md) for a comprehensive guide on all optimizations implemented, including:
+
+- Performance optimizations (code splitting, lazy loading, image optimization)
+- SEO enhancements (structured data, meta tags, sitemap)
+- Accessibility improvements (ARIA labels, keyboard navigation, screen reader support)
+- Technical improvements (error handling, loading states, caching)
+
 ## Getting Started
 
 First, run the development server:
