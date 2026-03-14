@@ -147,11 +147,13 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${fonts.className} bg-white bg-dot-black/[0.2] overflow-x-hidden antialiased`}
+        className={`${fonts.className} overflow-x-hidden antialiased`}
+        style={{ backgroundColor: "hsl(30, 25%, 97%)" }}
       >
         <Navbar />
-        <div className="bg-primary text-center">
-          <p className="text-white text-xs md:text-sm py-2">
+        <div className="bg-primary text-center py-2">
+          <p className="text-white/95 text-xs font-medium tracking-wide flex items-center justify-center gap-1.5">
+            <span aria-hidden="true">📍</span>
             Hanya menerima pesanan dari daerah Ciamis, Lakbok.
           </p>
         </div>

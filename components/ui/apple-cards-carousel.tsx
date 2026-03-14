@@ -1,18 +1,10 @@
 "use client";
 
-import React, {
-  useEffect,
-  useState,
-  createContext, useRef,
-} from "react";
-import {
-  IconArrowNarrowLeft,
-  IconArrowNarrowRight,
-} from "@tabler/icons-react";
+import React, { useEffect, useState, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import Image, { ImageProps } from "next/image";
-
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface CarouselProps {
   items: JSX.Element[];
@@ -24,7 +16,6 @@ type Card = {
   title: string;
   category: string;
 };
-
 
 export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -42,128 +33,169 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
     if (carouselRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
       setCanScrollLeft(scrollLeft > 0);
-      setCanScrollRight(scrollLeft < scrollWidth - clientWidth);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 1);
     }
   };
 
   const scrollLeft = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: -300, behavior: "smooth" });
+      carouselRef.current.scrollBy({ left: -360, behavior: "smooth" });
     }
   };
 
   const scrollRight = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: 300, behavior: "smooth" });
+      carouselRef.current.scrollBy({ left: 360, behavior: "smooth" });
     }
   };
 
   return (
-      <div className="w-full max-w-7xl mx-auto">
-        <div
-          className="flex w-full overflow-x-scroll overscroll-x-auto py-10 md:py-20 scroll-smooth [scrollbar-width:none]"
-          ref={carouselRef}
-          onScroll={checkScrollability}
+    <div className="relative w-full">
+      {/* Navigation arrows */}
+      <div className="flex justify-center gap-3 mb-8">
+        <button
+          className={cn(
+            "h-10 w-10 rounded-full border flex items-center justify-center transition-all duration-200",
+            canScrollLeft
+              ? "border-primary/30 text-primary bg-white hover:bg-primary hover:text-white hover:border-primary shadow-sm hover:shadow-md hover:shadow-primary/20"
+              : "border-gray-200 text-gray-300 bg-white cursor-not-allowed",
+          )}
+          onClick={scrollLeft}
+          disabled={!canScrollLeft}
+          aria-label="Scroll ke kiri"
         >
-          <div
-            className={cn(
-              "absolute right-0 z-[1000] h-auto w-[5%] overflow-hidden bg-gradient-to-l",
-            )}
-          ></div>
+          <ChevronLeft size={18} />
+        </button>
+        <button
+          className={cn(
+            "h-10 w-10 rounded-full border flex items-center justify-center transition-all duration-200",
+            canScrollRight
+              ? "border-primary/30 text-primary bg-white hover:bg-primary hover:text-white hover:border-primary shadow-sm hover:shadow-md hover:shadow-primary/20"
+              : "border-gray-200 text-gray-300 bg-white cursor-not-allowed",
+          )}
+          onClick={scrollRight}
+          disabled={!canScrollRight}
+          aria-label="Scroll ke kanan"
+        >
+          <ChevronRight size={18} />
+        </button>
+      </div>
 
-          <div
-            className={cn(
-              "flex flex-row justify-start gap-4 pl-4",
-              "mx-auto",
-            )}
-          >
-            {items.map((item, index) => (
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: 20,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                  transition: {
-                    duration: 0.5,
-                    delay: 0.2 * index,
-                    ease: "easeOut",
-                    once: true,
-                  },
-                }}
-                key={"card" + index}
-                className="last:pr-[5%] md:last:pr-[33%]  rounded-3xl"
-              >
-                {item}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-        <div className="flex justify-end gap-2 mr-10">
-          <button
-            className="relative z-40 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
-            onClick={scrollLeft}
-            disabled={!canScrollLeft}
-            aria-label="Scroll ke kiri untuk melihat menu sebelumnya"
-          >
-            <IconArrowNarrowLeft className="h-6 w-6 text-gray-500" />
-          </button>
-          <button
-            className="relative z-40 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
-            onClick={scrollRight}
-            disabled={!canScrollRight}
-            aria-label="Scroll ke kanan untuk melihat menu selanjutnya"
-          >
-            <IconArrowNarrowRight className="h-6 w-6 text-gray-500" />
-          </button>
+      {/* Scroll container */}
+      <div
+        className="flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        ref={carouselRef}
+        onScroll={checkScrollability}
+      >
+        <div className="flex flex-row gap-5 px-5 md:px-10 pb-6">
+          {items.map((item, index) => (
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 0.5,
+                  delay: 0.12 * index,
+                  ease: "easeOut",
+                },
+              }}
+              key={"card" + index}
+              className="flex-shrink-0"
+            >
+              {item}
+            </motion.div>
+          ))}
         </div>
       </div>
+    </div>
   );
 };
 
-export const Card = ({ card, layout = false }: { card: Card; layout?: boolean; }) => {
+export const Card = ({
+  card,
+  layout = false,
+}: {
+  card: Card;
+  layout?: boolean;
+}) => {
+  const [hovered, setHovered] = useState(false);
+
   return (
-    <motion.button
-      layoutId={layout ? `card-${card.title}` : undefined}
-      className="rounded-3xl bg-gray-100 dark:bg-neutral-900 h-96 w-72 md:h-[40rem] md:w-96 overflow-hidden flex flex-col items-start justify-start relative z-10"
+    <div
+      className="relative group rounded-2xl overflow-hidden cursor-pointer"
+      style={{ width: "300px", height: "380px" }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       aria-label={`${card.title} - ${card.category}`}
     >
-      <div
-        className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-30 pointer-events-none" />
-      <div className="relative z-40 p-8">
-        <motion.p
-          layoutId={layout ? `category-${card.category}` : undefined}
-          className="text-white text-sm md:text-base font-medium font-sans text-left"
-        >
-          {card.category}
-        </motion.p>
-        <motion.p
-          layoutId={layout ? `title-${card.title}` : undefined}
-          className="text-white text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-sans mt-2"
-        >
-          {card.title}
-        </motion.p>
-      </div>
+      {/* Image */}
       <BlurImage
         src={card.src}
         alt={`${card.title} - menu catering Nabila`}
         fill
-        className="object-cover absolute z-10 inset-0"
-        sizes="(max-width: 768px) 288px, 384px"
+        className={cn(
+          "object-cover transition-transform duration-500",
+          hovered ? "scale-105" : "scale-100",
+        )}
+        sizes="300px"
       />
-    </motion.button>
+
+      {/* Gradient overlay — always visible at bottom */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 pointer-events-none" />
+
+      {/* Content */}
+      <div className="absolute bottom-0 left-0 right-0 z-20 p-6">
+        {/* Price badge */}
+        <div className="inline-flex items-center mb-3">
+          <span
+            className="text-xs font-semibold px-2.5 py-1 rounded-full text-white/90"
+            style={{ backgroundColor: "hsl(4, 72%, 38%)" }}
+          >
+            {card.category}
+          </span>
+        </div>
+        {/* Title */}
+        <p className="text-white font-bold text-xl leading-tight">
+          {card.title}
+        </p>
+
+        {/* Hover CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 6 }}
+          transition={{ duration: 0.2 }}
+          className="mt-3 flex items-center gap-1.5 text-white/80 text-xs font-medium"
+        >
+          <span>Pesan sekarang</span>
+          <ChevronRight size={13} />
+        </motion.div>
+      </div>
+
+      {/* Top-right label */}
+      <div className="absolute top-4 right-4 z-20">
+        <span className="text-[10px] font-semibold uppercase tracking-widest text-white/60 bg-white/10 backdrop-blur-sm px-2.5 py-1 rounded-full">
+          Menu
+        </span>
+      </div>
+    </div>
   );
 };
 
-export const BlurImage = ({ height, width, src, className, alt, ...rest }: ImageProps) => {
+export const BlurImage = ({
+  height,
+  width,
+  src,
+  className,
+  alt,
+  ...rest
+}: ImageProps) => {
   const [isLoading, setLoading] = useState(true);
   return (
     <Image
       className={cn(
-        "transition duration-300",
-        isLoading ? "blur-sm" : "blur-0",
+        "transition duration-500",
+        isLoading ? "blur-sm scale-105" : "blur-0 scale-100",
         className,
       )}
       onLoad={() => setLoading(false)}
@@ -173,7 +205,7 @@ export const BlurImage = ({ height, width, src, className, alt, ...rest }: Image
       loading="lazy"
       decoding="async"
       blurDataURL={typeof src === "string" ? src : undefined}
-      alt={alt ? alt : "Background of a beautiful view"}
+      alt={alt ? alt : "Menu katering Nabila"}
       {...rest}
     />
   );

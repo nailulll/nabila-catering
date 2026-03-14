@@ -50,23 +50,23 @@ export const socialLinks: SocialLink[] = [
 
 export const menus: MenuItem[] = [
   {
-    title: "Gorengan",
-    category: "Rp 1.000 - Rp 3.000",
+    title: "Gorengan Renyah",
+    category: "Mulai Rp 1.000",
     src: "/gorengan.jpg",
   },
   {
     title: "Nasi Ayam Bakar",
-    category: "Rp 12.000 - Rp 22.000",
+    category: "Mulai Rp 12.000",
     src: "/nasi-ayam-bakar.jpg",
   },
   {
-    title: "Opor Ayam",
-    category: "Rp 15.000 - Rp 27.000",
+    title: "Opor Ayam Spesial",
+    category: "Mulai Rp 15.000",
     src: "/opor.jpg",
   },
   {
-    title: "Salad",
-    category: "Rp 9.000 - Rp 15.000",
+    title: "Salad Segar",
+    category: "Mulai Rp 9.000",
     src: "/salad.jpg",
   },
 ];
@@ -74,24 +74,24 @@ export const menus: MenuItem[] = [
 export const pricingPlans: PricingPlan[] = [
   {
     title: {
-      name: "Paket Dasar",
+      name: "Paket Harian",
       question: "Harga bisa berubah tergantung pilihan menu",
       active: true,
     },
     description:
-      "Cocok untuk acara syukuran atau kumpul keluarga kecil. Menu bisa dipilih sesuai selera, memberikan fleksibilitas sesuai kebutuhan.",
+      "Pas untuk syukuran, arisan, atau makan siang kantor. Porsi terjangkau dengan cita rasa rumahan yang bikin nagih.",
     pricing: "Rp 12.000 - Rp 15.000",
     features: [
       {
-        name: "Menu Utama Sesuai Permintaan",
+        name: "Menu utama pilihan Anda",
         active: true,
       },
       {
-        name: "Tempat Makanan Kecil atau Sedang",
+        name: "Wadah makan standar",
         active: true,
       },
       {
-        name: "Makanan Ringan Sesuai Permintaan",
+        name: "Camilan pendamping",
         active: false,
         question: "Harga bisa berubah tergantung pilihan menu",
       },
@@ -104,28 +104,28 @@ export const pricingPlans: PricingPlan[] = [
   },
   {
     title: {
-      name: "Paket Lanjutan",
+      name: "Paket Acara",
       question: "Harga bisa berubah tergantung pilihan menu",
       active: true,
     },
     description:
-      "Ideal untuk perayaan besar atau acara spesial. Menyediakan variasi menu yang lebih luas dan porsi lebih besar untuk banyak tamu.",
+      "Pilihan terbaik untuk hajatan, pernikahan, atau reuni keluarga. Menu lengkap, rasa memuaskan, tamu pun senang.",
     pricing: "Rp 23.000 - Rp 35.000",
     features: [
       {
-        name: "Menu Utama Sesuai Permintaan",
+        name: "Menu utama pilihan Anda",
         active: true,
       },
       {
-        name: "Tempat Makanan Kecil atau Sedang",
+        name: "Wadah makan standar",
         active: true,
       },
       {
-        name: "Makanan Ringan Sesuai Permintaan",
+        name: "Camilan pendamping",
         active: true,
       },
       {
-        name: "Minuman Sesuai Permintaan",
+        name: "Minuman pilihan",
         active: true,
       },
     ],
@@ -141,32 +141,32 @@ export const pricingPlans: PricingPlan[] = [
       active: false,
     },
     description:
-      "Sesuaikan setiap detail sesuai keinginan! Dari pilihan menu hingga porsi, kami siap membuat catering yang sempurna untukmu.",
-    pricing: "_",
+      "Acara unik butuh sentuhan spesial. Ceritakan kebutuhan Anda — kami susunkan menu dan paket yang pas dari nol.",
+    pricing: "Sesuai kebutuhan",
     features: [
       {
-        name: "Berbagai Menu Sesuai Permintaan",
+        name: "Menu bebas pilihan",
         active: false,
       },
       {
-        name: "Tempat Makanan Besar atau Sedang",
+        name: "Porsi & wadah fleksibel",
         active: false,
       },
       {
-        name: "Menu Utama Sesuai Permintaan",
+        name: "Camilan pendamping",
         active: false,
       },
       {
-        name: "Minuman Sesuai Permintaan",
+        name: "Minuman pilihan",
         active: false,
       },
       {
-        name: "Makanan Ringan Sesuai Permintaan",
+        name: "Konsultasi menu gratis",
         active: false,
       },
     ],
     button: {
-      text: "Hubungi Kami",
+      text: "Diskusi Dulu",
       link: "",
       active: false,
     },
@@ -176,21 +176,27 @@ export const pricingPlans: PricingPlan[] = [
 export const testimonials: Testimonial[] = [
   {
     quote:
-      "Makanannya enak banget, porsinya pas, dan selalu datang tepat waktu. Ayam bakar sambal matahnya juara banget!",
-    name: "Budi",
-    title: "Jakarta Barat",
+      "Udah dua kali pesan buat acara keluarga, dan dua-duanya memuaskan. Ayam bakarnya bumbunya nresep banget, tamu sampai nambah!",
+    name: "Bu Siti",
+    title: "Lakbok, Ciamis",
   },
   {
     quote:
-      "Aku suka fleksibilitasnya. Mau ubah menu atau tambah porsi, semuanya gampang diatur. Recommended banget!",
-    name: "Tia",
-    title: "Jakarta Barat",
+      "Harganya sangat terjangkau tapi kualitasnya nggak murahan. Porsi cukup, makanan datang tepat waktu, dan lonjong. Bakal pesan lagi!",
+    name: "Pak Darmawan",
+    title: "Ciamis Kota",
   },
   {
     quote:
-      "Udah langganan catering ini buat acara keluarga. Makanannya selalu fresh dan bumbunya pas banget. Semua tamu suka!",
-    name: "Edgar Allan Poe",
-    title: "Jakarta Selatan",
+      "Buat kondangan RT kemarin saya percayakan ke Nabila Katering. Hasilnya? Tamu pada tanya cateringnya mana — semua minta kontaknya!",
+    name: "Ibu Rohayati",
+    title: "Pamarican, Ciamis",
+  },
+  {
+    quote:
+      "Enak, bersih, dan orangnya ramah banget. Mau minta ganti menu juga dilayani dengan baik. Recommended untuk warga Lakbok!",
+    name: "Kang Ridwan",
+    title: "Lakbok, Ciamis",
   },
 ];
 
