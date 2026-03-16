@@ -110,22 +110,6 @@ const Hero = () => {
           ))}
         </div>
       </div>
-
-      {/* Nest Hub subtle link */}
-      <div className="pb-6">
-        <a
-          href="https://nesthubstudios.web.id"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Website ini dibuat oleh Nest Hub Studios"
-          className="inline-flex items-center gap-1.5 text-xs text-[hsl(var(--muted-foreground))] hover:text-primary transition-colors duration-200"
-        >
-          <span>Mau punya website seperti ini?</span>
-          <span className="text-primary font-medium underline underline-offset-2">
-            Kunjungi Nest Hub Studios
-          </span>
-        </a>
-      </div>
     </section>
   );
 };

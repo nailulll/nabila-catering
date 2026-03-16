@@ -60,14 +60,14 @@ export const menus: MenuItem[] = [
     src: "/nasi-ayam-bakar.jpg",
   },
   {
-    title: "Opor Ayam Spesial",
-    category: "Mulai Rp 15.000",
-    src: "/opor.jpg",
+    title: "Nasi Kuning Tumpeng",
+    category: "Mulai Rp 100.000",
+    src: "/tumpeng.png",
   },
   {
-    title: "Salad Segar",
-    category: "Mulai Rp 9.000",
-    src: "/salad.jpg",
+    title: "Paket Nasi Bulat",
+    category: "Mulai Rp 15.000",
+    src: "/nasibulat.png",
   },
 ];
 
