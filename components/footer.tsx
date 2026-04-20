@@ -32,7 +32,7 @@ export default function Footer() {
 
             {/* NEST button */}
             <a
-              href="https://nesthubstudios.web.id"
+              href="https://nest-official.vercel.app/id"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Bagian dari Nest Hub Studios"

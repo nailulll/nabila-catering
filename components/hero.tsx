@@ -24,7 +24,7 @@ const Hero = () => {
         {/* Area badge */}
         <div className="inline-flex items-center gap-1.5 bg-primary/8 border border-primary/20 text-primary text-xs font-medium px-3.5 py-1.5 rounded-full mb-8 backdrop-blur-sm">
           <MapPin size={12} strokeWidth={2.5} />
-          <span>Melayani area Ciamis &amp; Lakbok</span>
+          <span>Melayani area Ciamis Kecamatan Lakbok</span>
         </div>
 
         {/* Heading */}
@@ -92,7 +92,7 @@ const Hero = () => {
         {/* Trust indicators */}
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
           {[
-            "Dipercaya warga Lakbok & Ciamis",
+            "Dipercaya warga Ciamis Kecataman Lakbok",
             "Bahan segar, dimasak harian",
             "Harga jujur, rasa bintang lima",
           ].map((item) => (

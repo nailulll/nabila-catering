@@ -109,8 +109,8 @@ export const pricingPlans: PricingPlan[] = [
       active: true,
     },
     description:
-      "Pilihan terbaik untuk hajatan, pernikahan, atau reuni keluarga. Menu lengkap, rasa memuaskan, tamu pun senang.",
-    pricing: "Rp 23.000 - Rp 35.000",
+      "Pilihan terbaik untuk tradisi kepungan, syukuran, atau reuni keluarga. Menu lengkap, rasa memuaskan, tamu pun senang.",
+    pricing: "Rp 23.000 - Rp 40.000",
     features: [
       {
         name: "Menu utama pilihan Anda",
@@ -142,7 +142,7 @@ export const pricingPlans: PricingPlan[] = [
     },
     description:
       "Acara unik butuh sentuhan spesial. Ceritakan kebutuhan Anda — kami susunkan menu dan paket yang pas dari nol.",
-    pricing: "Sesuai kebutuhan",
+    pricing: "Harga Sesuai kebutuhan",
     features: [
       {
         name: "Menu bebas pilihan",
