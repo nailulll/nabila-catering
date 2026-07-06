@@ -1,51 +1,44 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+@theme {
+  --color-deep-forest: #00473c;
+  --color-lime-glow: #e6ff55;
+  --color-sage-mist: #d8e5d6;
+  --color-warm-sand: #e8dcc6;
+  --color-cream-canvas: #f4f3e7;
+  --color-forest-shadow: #0e150e;
+  --color-pure-ink: #000000;
+  --color-warm-gray: #8c8c82;
+  --color-slate-gray: #555555;
+
+  --color-background: var(--color-cream-canvas);
+  --color-foreground: var(--color-forest-shadow);
+  
+  --radius-lg: 24px;
+  --radius-md: 20px;
+  --radius-sm: 8px;
+  --radius-badge: 20px;
+  --radius-pill: 9999px;
+}
+
+@utility text-balance {
+  text-wrap: balance;
 }
 
 @layer base {
-  :root {
-    /* Deep Crimson / Burgundy — merah tua yang kaya */
-    --background: 30 25% 97%;
-    --foreground: 10 15% 12%;
-    --card: 30 20% 94%;
-    --card-foreground: 10 15% 12%;
-    --popover: 30 25% 97%;
-    --popover-foreground: 10 15% 12%;
-    --primary: 4 72% 38%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 20 30% 92%;
-    --secondary-foreground: 10 15% 25%;
-    --muted: 30 18% 90%;
-    --muted-foreground: 10 10% 45%;
-    --accent: 35 65% 88%;
-    --accent-foreground: 10 15% 15%;
-    --destructive: 0 84% 28%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 20 15% 82%;
-    --input: 20 15% 80%;
-    --ring: 4 72% 38%;
-    --radius: 0.75rem;
-
-    /* Custom accent colors */
-    --gold: 38 72% 55%;
-    --cream: 35 60% 93%;
-    --warm-dark: 10 20% 14%;
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
   }
 
   /* Focus indicators for accessibility */
   *:focus-visible {
-    @apply outline-2 outline-offset-2 outline-primary;
+    @apply outline-2 outline-offset-2 outline-deep-forest;
   }
 
   button:focus-visible,
   a:focus-visible {
-    @apply outline-2 outline-offset-2 outline-primary;
+    @apply outline-2 outline-offset-2 outline-deep-forest;
   }
 }
 
@@ -54,12 +47,11 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply w-1.5 rounded-full;
-  background-color: hsl(var(--primary) / 0.6);
+  @apply w-1.5 rounded-full bg-deep-forest/40;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: hsl(var(--primary));
+  @apply bg-deep-forest;
 }
 
 /* Improve text rendering */

@@ -7,7 +7,7 @@ import Image, { ImageProps } from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface CarouselProps {
-  items: JSX.Element[];
+  items: React.ReactNode[];
   initialScroll?: number;
 }
 
@@ -83,7 +83,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 
       {/* Scroll container */}
       <div
-        className="flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        className="flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth scrollbar-none [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         ref={carouselRef}
         onScroll={checkScrollability}
       >
@@ -101,7 +101,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
                 },
               }}
               key={"card" + index}
-              className="flex-shrink-0"
+              className="shrink-0"
             >
               {item}
             </motion.div>
@@ -142,7 +142,7 @@ export const Card = ({
       />
 
       {/* Gradient overlay — always visible at bottom */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent z-10 pointer-events-none" />
 
       {/* Content */}
       <div className="absolute bottom-0 left-0 right-0 z-20 p-6">

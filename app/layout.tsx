@@ -1,19 +1,24 @@
-import { GoogleAnalytics } from "@next/third-parties/google";
+// import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Outfit, Inter } from "next/font/google";
 import "./globals.css";
 import React, { Suspense } from "react";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import WaButton from "@/components/wa-button";
 import { Analytics } from "@vercel/analytics/next";
-import { INSTAGRAM_URL, FACEBOOK_URL, WHATSAPP_URL, BUSINESS_ADDRESS } from "@/constants";
+import {
+  INSTAGRAM_URL,
+  FACEBOOK_URL,
+  WHATSAPP_URL,
+  BUSINESS_ADDRESS,
+} from "@/constants";
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://nabilacatering.web.id'),
+  metadataBase: new URL("https://nabilacatering.web.id"),
   title: {
     default: "Nabila Katering Lakbok | Catering Terbaik di Ciamis",
-    template: "%s | Nabila Katering"
+    template: "%s | Nabila Katering",
   },
   description:
     "Nabila Katering menyediakan layanan catering di Kecamatan Lakbok, Kabupaten Ciamis. Menu beragam, harga terjangkau, cocok untuk semua acara! Pesan sekarang untuk acara Anda.",
@@ -27,7 +32,7 @@ export const metadata: Metadata = {
     "pesan catering lakbok",
     "katering pernikahan ciamis",
     "katering acara ciamis",
-    "makanan rumahan ciamis"
+    "makanan rumahan ciamis",
   ],
   authors: [{ name: "Nabila Katering" }],
   creator: "Nabila Katering",
@@ -38,11 +43,12 @@ export const metadata: Metadata = {
     telephone: true,
   },
   openGraph: {
-    type: 'website',
-    locale: 'id_ID',
-    url: 'https://nabilacatering.web.id',
+    type: "website",
+    locale: "id_ID",
+    url: "https://nabilacatering.web.id",
     title: "Nabila Katering Lakbok | Catering Terbaik di Ciamis",
-    description: "Layanan catering berkualitas di Kecamatan Lakbok, Ciamis. Menu beragam, harga terjangkau, cocok untuk semua acara!",
+    description:
+      "Layanan catering berkualitas di Kecamatan Lakbok, Ciamis. Menu beragam, harga terjangkau, cocok untuk semua acara!",
     siteName: "Nabila Katering",
     images: [
       {
@@ -68,23 +74,26 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   alternates: {
-    canonical: 'https://nabilacatering.web.id',
+    canonical: "https://nabilacatering.web.id",
   },
 };
 
-const fonts = Poppins({
+const outfit = Outfit({
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-outfit",
   display: "swap",
-  preload: true,
-  fallback: ['system-ui', 'arial'],
-  adjustFontFallback: true,
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
 });
 
 export default function RootLayout({
@@ -94,52 +103,54 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Restaurant",
     "@id": "https://nabilacatering.web.id",
-    "name": "Nabila Katering Lakbok",
-    "image": "https://nabilacatering.web.id/nasi-ikan-bakar.jpg",
-    "description": "Nabila Katering menyediakan layanan catering di Kecamatan Lakbok, Kabupaten Ciamis. Menu beragam, harga terjangkau, cocok untuk semua acara!",
-    "address": {
+    name: "Nabila Katering Lakbok",
+    image: "https://nabilacatering.web.id/nasi-ikan-bakar.jpg",
+    description:
+      "Nabila Katering menyediakan layanan catering di Kecamatan Lakbok, Kabupaten Ciamis. Menu beragam, harga terjangkau, cocok untuk semua acara!",
+    address: {
       "@type": "PostalAddress",
-      "streetAddress": "RT 08 RW 03, Desa Baregbeg",
-      "addressLocality": "Lakbok",
-      "addressRegion": "Jawa Barat",
-      "postalCode": "46385",
-      "addressCountry": "ID"
+      streetAddress: "RT 08 RW 03, Desa Baregbeg",
+      addressLocality: "Lakbok",
+      addressRegion: "Jawa Barat",
+      postalCode: "46385",
+      addressCountry: "ID",
     },
-    "geo": {
+    geo: {
       "@type": "GeoCoordinates",
-      "latitude": "-7.402893",
-      "longitude": "108.683532"
+      latitude: "-7.402893",
+      longitude: "108.683532",
     },
-    "url": "https://nabilacatering.web.id",
-    "telephone": "+62-831-1765-6712",
-    "servesCuisine": "Indonesian",
-    "priceRange": "Rp 12.000 - Rp 35.000",
-    "openingHoursSpecification": {
+    url: "https://nabilacatering.web.id",
+    telephone: "+62-831-1765-6712",
+    servesCuisine: "Indonesian",
+    priceRange: "Rp 12.000 - Rp 35.000",
+    openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
+      dayOfWeek: [
         "Monday",
         "Tuesday",
         "Wednesday",
         "Thursday",
         "Friday",
         "Saturday",
-        "Sunday"
+        "Sunday",
       ],
-      "opens": "08:00",
-      "closes": "20:00"
+      opens: "08:00",
+      closes: "20:00",
     },
     // NOTE: Update these URLs with actual social media profile URLs
-    "sameAs": [
-      INSTAGRAM_URL,
-      FACEBOOK_URL
-    ]
+    sameAs: [INSTAGRAM_URL, FACEBOOK_URL],
   };
 
   return (
     <html lang="id" className="scroll-smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <script
           type="application/ld+json"
@@ -147,11 +158,10 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${fonts.className} overflow-x-hidden antialiased`}
-        style={{ backgroundColor: "hsl(30, 25%, 97%)" }}
+        className={`${inter.variable} ${outfit.variable} font-sans overflow-x-hidden antialiased bg-background text-foreground`}
       >
         <Navbar />
-        <div className="bg-primary text-center py-2">
+        <div className="bg-deep-forest text-center py-2">
           <p className="text-white/95 text-xs font-medium tracking-wide flex items-center justify-center gap-1.5">
             <span aria-hidden="true">📍</span>
             Hanya menerima pesanan dari daerah Ciamis, Lakbok.
@@ -161,7 +171,7 @@ export default function RootLayout({
         <WaButton />
         <Footer />
         <Suspense fallback={null}>
-          <GoogleAnalytics gaId="G-ZTE7F851H5" />
+          {/* <GoogleAnalytics gaId="G-ZTE7F851H5" /> */}
           <Analytics />
         </Suspense>
       </body>

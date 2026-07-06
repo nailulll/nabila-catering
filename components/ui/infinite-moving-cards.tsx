@@ -69,7 +69,7 @@ export const InfiniteMovingCards = ({ items, direction = "left", speed = "fast",
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20 w-full overflow-hidden mx-auto [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
+        "scroller relative z-20 w-full overflow-hidden mx-auto mask-[linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
         className,
       )}
     >
@@ -89,7 +89,7 @@ export const InfiniteMovingCards = ({ items, direction = "left", speed = "fast",
             <blockquote>
               <div
                 aria-hidden="true"
-                className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
+                className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%+4px)] w-[calc(100%+4px)]"
               />
               <p className="z-20 lg:text-sm text-xs leading-[1.6] text-gray-100 font-normal text-left">
                 {item.quote}

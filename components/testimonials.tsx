@@ -1,33 +1,37 @@
-import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import { testimonials } from "@/constants";
-import { Quote } from "lucide-react";
 
 export default function Testimonials() {
   return (
     <section
-      className="md:py-24 py-14"
-      style={{ backgroundColor: "hsl(30, 25%, 94%)" }}
+      className="w-full px-6 md:px-12 py-20 md:py-32 bg-warm-sand"
       aria-labelledby="testimonials-heading"
     >
-      <div className="lg:mx-auto mx-5 text-center mb-12">
-        {/* Section label */}
-        <div className="inline-flex items-center justify-center w-10 h-10 bg-primary/10 rounded-xl mb-5">
-          <Quote size={18} className="text-primary" />
+      <div className="max-w-[1200px] mx-auto">
+        <div className="mb-16">
+          <div className="text-[14px] font-bold uppercase tracking-[0.05em] text-deep-forest mb-4">
+            KATA MEREKA
+          </div>
+          <h2
+            id="testimonials-heading"
+            className="text-[40px] md:text-[60px] font-outfit text-deep-forest leading-[0.85] max-w-2xl"
+          >
+            Sudah Dipercaya Ratusan Keluarga
+          </h2>
         </div>
-        <p className="text-primary text-xs font-semibold uppercase tracking-[0.2em] mb-3">
-          Kata Mereka
-        </p>
-        <h2
-          id="testimonials-heading"
-          className="md:text-4xl text-2xl font-bold text-[hsl(var(--warm-dark))] max-w-xl mx-auto leading-tight"
-        >
-          Sudah Dipercaya Ratusan Keluarga
-        </h2>
-        <p className="md:text-base text-sm text-[hsl(var(--muted-foreground))] max-w-md mx-auto mt-4 leading-relaxed">
-          Dari Lakbok sampai Ciamis — ini cerita nyata dari pelanggan kami
-        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+          {testimonials.map((item, index) => (
+            <figure key={index} className="flex flex-col">
+              <blockquote className="text-[20px] md:text-[24px] font-inter text-forest-shadow leading-[1.33] mb-6 flex-1">
+                “{item.quote}”
+              </blockquote>
+              <figcaption className="text-[16px] text-forest-shadow/80 font-bold uppercase tracking-[0.017em]">
+                {item.name} <span className="font-normal opacity-75 mx-2">—</span> <span className="font-normal">{item.title}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
       </div>
-      <InfiniteMovingCards items={testimonials} speed="slow" />
     </section>
   );
 }
