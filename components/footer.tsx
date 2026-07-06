@@ -31,7 +31,7 @@ export default function Footer() {
             </p>
 
             {/* NEST button */}
-            <a
+            {/* <a
               href="https://nest-official.vercel.app/id"
               target="_blank"
               rel="noopener noreferrer"
@@ -48,7 +48,7 @@ export default function Footer() {
                 width={36}
                 height={36}
               />
-            </a>
+            </a> */}
           </div>
 
           {/* Social links */}

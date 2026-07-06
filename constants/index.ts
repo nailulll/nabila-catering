@@ -9,7 +9,6 @@ import type {
 
 // Contact information
 export const WHATSAPP_URL = "https://wa.me/6283117656712";
-export const BUSINESS_EMAIL = "nest.hub.studios@gmail.com";
 export const BUSINESS_PHONE = "+62 831 1765 6712";
 export const BUSINESS_ADDRESS =
   "RT 08 RW 03, Desa Baregbeg, Kec. Lakbok, Kabupaten Ciamis, Jawa Barat 46385";
@@ -208,9 +207,5 @@ export const contactLinks: ContactLink[] = [
   {
     name: BUSINESS_PHONE,
     icon: "/ic_baseline-phone.svg",
-  },
-  {
-    name: BUSINESS_EMAIL,
-    icon: "/ic_baseline-email.svg",
   },
 ];
