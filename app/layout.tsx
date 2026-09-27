@@ -7,7 +7,7 @@ import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import WaButton from "@/components/wa-button";
 import { Analytics } from "@vercel/analytics/next";
-import { INSTAGRAM_URL, FACEBOOK_URL, WHATSAPP_URL, BUSINESS_ADDRESS } from "@/constants";
+import { INSTAGRAM_URL, FACEBOOK_URL } from "@/constants";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://nabilacatering.web.id'),

@@ -7,7 +7,7 @@ import Image, { ImageProps } from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface CarouselProps {
-  items: JSX.Element[];
+  items: React.JSX.Element[];
   initialScroll?: number;
 }
 
@@ -22,13 +22,6 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
-  useEffect(() => {
-    if (carouselRef.current) {
-      carouselRef.current.scrollLeft = initialScroll;
-      checkScrollability();
-    }
-  }, [initialScroll]);
-
   const checkScrollability = () => {
     if (carouselRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
@@ -36,6 +29,13 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
       setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 1);
     }
   };
+
+  useEffect(() => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollLeft = initialScroll;
+      checkScrollability();
+    }
+  }, [initialScroll]);
 
   const scrollLeft = () => {
     if (carouselRef.current) {
@@ -114,10 +114,8 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 
 export const Card = ({
   card,
-  layout = false,
 }: {
   card: Card;
-  layout?: boolean;
 }) => {
   const [hovered, setHovered] = useState(false);
 
